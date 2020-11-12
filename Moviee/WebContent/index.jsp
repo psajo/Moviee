@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>영화 어때? 최고의 영화 추천 및 리뷰 사이트</title>
-		<link rel="stylesheet" href="index.css" />
+		<link rel="stylesheet" href="./resources/css/index.css" />
 		<!-- <script type="text/javascript" src="movieApiGet.js"></script>  -->
 	</head>
 
@@ -15,7 +15,7 @@
 	<div class="header">
 			<div class ="navbar">
 					<div class="navbar_logo">
-						<a href="index.jsp"><img src="./images/mylogo.png" alt="로고"></a>
+						<a href="index.jsp"><img src="./resources/our_images/mylogo.png" alt="로고"></a>
 					</div>
 					<div class="search">
 						<input type="search" class="searchbox" placeholder="영화를 검색하세요">
@@ -33,7 +33,7 @@
 			<div class ="main_content">
 				<div id="main1-1">
 					<p>최근 별점이 제일 높은 영화</p>
-					<img src="./images/samplePoster1.png" width="300" height="400">
+					<img src="./resources/ext_images/samplePoster1.png" width="300" height="400">
 					<p>도굴</p>
 					<p>별점 : 4.5</p>
 					<div class="starRating">
@@ -42,7 +42,7 @@
 				</div>
 				<div id="main1-2">
 					<p>최근 리뷰가 많은 영화</p>
-					<img src="./images/samplePoster2.png" width="300" height="400">
+					<img src="./resources/ext_images/samplePoster2.png" width="300" height="400">
 					<p>삼토반</p>
 					<p>리뷰수 : 440 </p>
 					<div class="starRating">
@@ -51,7 +51,7 @@
 				</div>
 				<div id="main1-3">
 					<p>최근 추천지수가 가장 높은 영화</p>
-					<img src="./images/samplePoster3.png" width="300" height="400">
+					<img src="./resources/ext_images/samplePoster3.png" width="300" height="400">
 					<p>노트북</p>
 					<p>추천지수 : 10000</p>
 					<div class="starRating">
@@ -62,7 +62,7 @@
 			<div class="main_content2">
 				<div id="main2-1">
 					<p>최근 상영작</p>
-					<img src="./images/samplePoster1.png" width="300" height="400">
+					<img src="./resources/ext_images/samplePoster1.png" width="300" height="400">
 					<p>노트북</p>
 					<p>리뷰 수 : 10000</p>
 				</div>

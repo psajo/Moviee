@@ -56,13 +56,10 @@
 </head>
 <body>
 	<header>
-		
+		<div id="header"></div>
 	</header>
 	<section>
 		<div id="section">
-			<div>
-				<a href="" class="logo_login"><img src="resources/images/mylogo.png" alt ="로고"></a>
-			</div>
 			<h1 class="titletext">
 				내정보
 			</h1>
@@ -93,5 +90,13 @@
 			</div>
 		</div>
 	</section>
+	<footer>
+		<div id="footer"></div>
+	</footer>
 </body>
+<script language="javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<script>
+	$("#header").load("./header.html");
+	$("#footer").load("./footer.html");
+</script>
 </html>
