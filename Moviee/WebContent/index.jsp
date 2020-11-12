@@ -15,7 +15,7 @@
 	<div class="header">
 			<div class ="navbar">
 					<div class="navbar_logo">
-						<a href="index.jsp"><img src="./resources/our_images/mylogo.png" alt="로고"></a>
+						<a href="./index.jsp"><img src="./resources/our_images/mylogo.png" alt="로고"></a>
 					</div>
 					<div class="search">
 						<input type="search" class="searchbox" placeholder="영화를 검색하세요">
