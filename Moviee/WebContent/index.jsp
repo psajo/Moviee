@@ -66,7 +66,7 @@
 					<p>노트북</p>
 					<p>리뷰 수 : 10000</p>
 				</div>
-				<div id="main2-2" width="800" height="400">
+				<div id="main2-2">
 				<p> 리뷰 1  <br/>
 				<textarea rows="5" cols="70" style="resize:none;">와 정말 최고의 영화 정말 재미있어요 ^^ 추천합니다 </textarea> 
 				<p> 리뷰 2 <br/>
