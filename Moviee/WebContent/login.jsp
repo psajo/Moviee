@@ -102,7 +102,7 @@
 		padding: 0 15px 0;
 		float : left;
 	}
-	#section a {
+	#section a{
 		color : #3181FF;
 		text-decoration: none;
 	}
@@ -131,8 +131,8 @@
 				</div>
 			</form>
 			<p class="space_or"><span>다른 로그인</span></p>
-			<a href=""><div class="kakao_btn"><img src="./resources/our_images/kakaologo.png" class="kakaologo">카카오톡으로 로그인</div></a>
-			<a href=""><div class="naver_btn"><img src="./resources/our_images/naverlogo.png" class="naverlogo">네이버로 로그인</div></a>
+			<div class="kakao_btn"><a href=""><img src="./resources/our_images/kakaologo.png" class="kakaologo">카카오톡으로 로그인</a></div>
+			<div class="naver_btn"><a href=""><img src="./resources/our_images/naverlogo.png" class="naverlogo">네이버로 로그인</a></div>
 		</div>
 	</section>
 </body>

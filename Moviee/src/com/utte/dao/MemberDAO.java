@@ -82,8 +82,8 @@ public class MemberDAO {
 			ps.setString(2,  m_pwd);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				rs.getString("m_email");
-				///�닔�젙以�
+				//이메일, 비밀번호가 일치하는 정보가 있는 경우이므로 로그인처리
+				login_id = rs.getString("m_email");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -99,7 +99,6 @@ public class MemberDAO {
 				e2.printStackTrace();
 			}
 		}
-		
 		return login_id;
 	}
 }
