@@ -83,7 +83,7 @@ public class MemberDAO {
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				rs.getString("m_email");
-				///수정중
+				///�닔�젙以�
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

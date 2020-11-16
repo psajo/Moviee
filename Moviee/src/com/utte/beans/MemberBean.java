@@ -48,4 +48,5 @@ public class MemberBean{
 	public void setM_fav3(String m_fav3) {
 		this.m_fav3 = m_fav3;
 	}
+	
 }
