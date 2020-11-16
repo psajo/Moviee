@@ -102,7 +102,7 @@
 		padding: 0 15px 0;
 		float : left;
 	}
-	a {
+	#section a {
 		color : #3181FF;
 		text-decoration: none;
 	}
@@ -116,12 +116,12 @@
 				<a href="./index.jsp" class="logo_login"><img src="./resources/our_images/mylogo.png" alt ="로고"></a>
 			</h1>
 			<h1 class="titletext">로그인</h1>
-			<form id="frmLogin" name="frmLogin" autocomplete="off" action="" method="POST">
+			<form id="frmLogin" name="frmLogin" autocomplete="off" action="LoginServlet" method="POST">
 				<div class="input_area">
-					<input type="text" id="user_id" name="user_id" class="inputbox" maxlength="50" placeholder="이메일">
+					<input type="text" id="m_email" name="m_email" class="inputbox" maxlength="50" placeholder="이메일">
 				</div>
 				<div class="input_area">
-					<input type="password" id="user_pwd" name="user_pwd" class="inputbox" maxlength="50" placeholder="비밀번호">
+					<input type="password" id="m_pwd" name="m_pwd" class="inputbox" maxlength="50" placeholder="비밀번호">
 				</div>
 				<div class="input_area"><input type="submit" title="로그인" alt="로그인" value="로그인" class="btn_login" id="btn_login"></div>
 				<div class="auto_login"><input type="checkbox" value="ok" id="lgch" name="lgch">로그인 상태 유지</div>
