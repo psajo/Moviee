@@ -37,7 +37,7 @@ public class MemberDAO {
 		}
 		return ret;
 	}
-	public static boolean emailDupChk(String m_email) {
+	public static boolean dup_email(String m_email) {
 		Connection conn =null;
 		PreparedStatement ps=null;
 		ResultSet rs = null;

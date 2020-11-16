@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.utte.dao.MemberDAO;
+
 
 @WebServlet("/TestServlet")
 public class TestServlet extends HttpServlet {
@@ -16,6 +18,11 @@ public class TestServlet extends HttpServlet {
 		resp.setContentType("text/html;charset=utf-8");
 		String test =req.getParameter("test");
 		resp.getWriter().print("테스트 서블릿!"+test);
+		if(MemberDAO.dup_email("test3@test.com")) {
+			System.out.println("중복");
+		}else {
+			System.out.println("가입가능");
+		}
 	}
 
 }
