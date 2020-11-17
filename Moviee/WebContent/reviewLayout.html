@@ -1,54 +1,75 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-
-
 	<head>
 	    <meta charset="UTF-8">
 	    <title>영화어때?</title>
-	    <link rel="stylesheet" type="text/css" href="./resources/css/reviewLayout.css">
+	    <link rel="stylesheet" type="text/css" href="./resorces/css/reviewLayout.css">
 	</head>
-	
 	
 	
 	<body>
 	    <!-- header -->
-	     <div id="header">
-	     	<div class="container">
-		     	<div class="navbar_logo">
-					<a href="movieIndex.html"><img src="./img/logo.PNG" alt="로고"></a>
-				</div>
-				<div class="search">
-					<input type="search" class="searchbox" placeholder="영화를 검색하세요">
-					<button> search </button>
-					<a href=""><i class="fas fa-search"></i></a>
-				</div>
-				<ul class="nav_menu">
-					<li><a href="">홈</a></li>
-					<li><a href="">로그인</a></li>
-				</ul>
-			</div>
-	     </div>       
-	     <!-- //header -->
-	   
-	   
+	<header>
+		<div id="header"></div>
+	</header>          
 	   
 	     <!-- contents -->
 	     <div id="contents">
-	         <div id="content1">
-	             <div class="container">content1</div>
+	         <div class="container">
+	             <div class ="content1">	
+					<div class="reviewInfo-1">
+						<img src="./resources/ext_images/도굴.png" width="250" height="350">
+						<span>
+						<textarea rows="22" cols="70" style="resize:none;"> info </textarea>
+						</span>
+						<br>
+						<p>도굴</p>
+						<p>별점 : 4.5</p>
+						<div class="starRating">
+							<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+						</div>
+					</div>
+				</div>
 	         </div>
 	         
 	         
-	         <div id="content2">
-	             <div class="container">content2</div>
+	         <div class="container">
+	         	<div id="content2"></div>
+	            	<div class="content2">content2</div>
+					<img src="dogul.PNG" width="200" height="300">
+					<img src="dogul.PNG" width="200" height="300">
+					<img src="dogul.PNG" width="200" height="300">
+				</div>		
 	         </div>
 	         
 	         
-	         <div id="content3">
-	             <div class="container">content3</div>
-	         </div>
-	     </div>        
+	         <div class="container">
+	             <div id="content3"></div>
+	             	<div class="review-input">
+	             		<form method="get" action="">
+			             	<h3>Review</h3>
+							<button>수정</button>
+							<button>삭제</button>
+							<button>등록</button> <br/>
+							<textarea name=review_content cols="50" rows="5"></textarea>	       	
+	             		</form>
+	             	
+	             	<div class="review-read">
+	             	<p> user1 
+					<button>추천</button> <button>신고</button> <br/>
+					<textarea rows="5" cols="50" style="resize:none;">와 정말 최고의 영화 정말 재미있어요 ^^ 추천합니다 </textarea> 
+					
+					<p> user2 
+					<button>추천</button> <button>신고</button> <br/>
+					<textarea rows="5" cols="50" style="resize:none;">와 정말 최고의 영화 정말 재미있어요 ^^ 추천합니다 </textarea>
+					
+					<p> user3 
+					<button>추천</button> <button>신고</button> <br/>
+					<textarea rows="5" cols="50" style="resize:none;" >와 정말 최고의 영화 정말 재미있어요 ^^ 추천합니다 </textarea>
+	             	</div>
+	         	</div>
+	         </div>        
 	     <!-- //contents -->
 	     
 	     
@@ -68,7 +89,6 @@
 		</div>
 	  </div>
 	  <!-- //footer -->
-	  
-	  
+	   
 	</body>
 </html>
