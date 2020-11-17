@@ -5,10 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.utte.beans.MemberBean;
+import com.utte.beans.Member;
 
 public class MemberDAO {
-	public static int signUp(MemberBean mvo) {
+	public static int signUp(Member mvo) {
 		Connection conn =null;
 		PreparedStatement ps=null;
 		int ret =-1;

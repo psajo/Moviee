@@ -2,7 +2,7 @@ package com.utte.beans;
 
 import java.io.Serializable;
 
-public class MemberBean{
+public class Member{
 	//테이블명 : member 
 	//컬렴명 : m_email, m_pwd, m_nick, m_fav1, m_fav2, m_fav3
 	//이메일을 pk로 사용함
