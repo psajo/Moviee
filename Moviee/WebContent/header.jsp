@@ -1,49 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<html>
-<head>
-	<meta charset="utf-8">
-	<style>
-		.header a{
-			text-decoration: none;
-			color : #E91213;
-		}
-		.header { 
-			text-align: center;
-			border-bottom: 2px solid #E91213;
-		}
-		.navbar {
-			margin: 0 auto;
-			width:1000px;
-			display:inline-flex;
-			justify-content: space-between;
-			align-items: center;
-			font-size: 24px;
-			color : #E91213;
-		}
-		.nav_menu{
-			display : flex;
-			list-style: none;
-			padding-left: 0;
-		}
-		.nav_menu li {
-			padding : 8px 12px;
-		}
-		.searchbox{
-			font-size: 20px;
-			border-color: #E91213;
-			border-radius: 3px;
-			width: 400px;
-			height: 40px;
-			vertical-align: middle;
-		}
-	</style>
-	<title>nav bar</title>
-</head>
-<body>
 <%
 	String login_id = session.getAttribute("login_id");
 %>
+	<link rel="stylesheet" href="./resources/css/header.css" />
 	<div class="header">
 		<div class ="navbar">
 			<div class="navbar_logo">
@@ -64,5 +24,3 @@
 			</ul>
 		</div>
 	</div>
-</body>
-</html>
