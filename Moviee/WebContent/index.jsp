@@ -12,22 +12,7 @@
 
 <!-- 상단바 영역   -->
 	<body>
-	<div class="header">
-			<div class ="navbar">
-					<div class="navbar_logo">
-						<a href="./index.jsp"><img src="./resources/our_images/mylogo.png" alt="로고"></a>
-					</div>
-					<div class="search">
-						<input type="search" class="searchbox" placeholder="영화를 검색하세요">
-						<a href=""><i class="fas fa-search"></i></a>
-					</div>
-					<ul class="nav_menu">
-						<li><a href="index.jsp">홈</a></li>
-						<li><a href="login.html">로그인</a></li>
-					</ul>
-			</div>
-		</div>
-
+		<jsp:include page="./header.jsp"/>
 <!-- 인덱스 메인 영역    -->
 		<div class = "main" >
 			<div class ="main_content">
