@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -39,6 +41,9 @@
 	<title>nav bar</title>
 </head>
 <body>
+<%
+	String login_id = session.getAttribute("login_id");
+%>
 	<div class="header">
 		<div class ="navbar">
 			<div class="navbar_logo">
@@ -50,7 +55,12 @@
 			</div>
 			<ul class="nav_menu">
 				<li><a href="">홈</a></li>
-				<li><a href="">로그인</a></li>
+				<li><a href="">게시판</a></li>
+				<%if (login_id ==null) { %>
+				<li><a href="./login.jsp">로그인</a></li>
+				<%}else { %>
+				<li><a href="./mypage.jsp"><%=login_id%></a>
+				<%} %>
 			</ul>
 		</div>
 	</div>

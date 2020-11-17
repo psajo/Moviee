@@ -109,6 +109,16 @@
 </style>
 <title>로그인</title>
 </head>
+<%
+	String m_email = (String)request.getParameter("m_email");
+	String m_pwd = (String)request.getParameter("m_pwd");
+	if(m_email == null) {
+		m_email="";
+	}
+	if(m_pwd == null) {
+		m_pwd="";
+	}
+%>
 <body>
 	<section>
 		<div id="section">
@@ -118,10 +128,10 @@
 			<h1 class="titletext">로그인</h1>
 			<form id="frmLogin" name="frmLogin" autocomplete="off" action="LoginServlet" method="POST">
 				<div class="input_area">
-					<input type="text" id="m_email" name="m_email" class="inputbox" maxlength="50" placeholder="이메일">
+					<input type="text" id="m_email" name="m_email" class="inputbox" maxlength="50" placeholder="이메일" value="<%=m_email%>">
 				</div>
 				<div class="input_area">
-					<input type="password" id="m_pwd" name="m_pwd" class="inputbox" maxlength="50" placeholder="비밀번호">
+					<input type="password" id="m_pwd" name="m_pwd" class="inputbox" maxlength="50" placeholder="비밀번호" value="<%=m_pwd%>">
 				</div>
 				<div class="input_area"><input type="submit" title="로그인" alt="로그인" value="로그인" class="btn_login" id="btn_login"></div>
 				<div class="auto_login"><input type="checkbox" value="ok" id="lgch" name="lgch">로그인 상태 유지</div>
@@ -135,5 +145,22 @@
 			<div class="naver_btn"><a href=""><img src="./resources/our_images/naverlogo.png" class="naverlogo">네이버로 로그인</a></div>
 		</div>
 	</section>
+<%
+	String failed = (String)request.getAttribute("failed");
+	if (failed == null) {
+		failed="";
+	}
+%>
+<script>
+	var failed ="<%=failed%>";
+	function alertFailed() {
+		if(failed !="") {
+			alert("가입하지 않은 회원이거나 잘못된 비밀번호 입니다.");
+			document.getElementById("m_email").focus();
+		}
+	}
+	window.onload=alertFailed;
+</script>
 </body>
+
 </html>
