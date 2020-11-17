@@ -76,14 +76,14 @@ public class MemberDAO {
 		ResultSet rs = null;
 		try {
 			conn = MyConnection.getConnection();
-			String sql = "SELECT m_email FROM member WHERE m_email=? and m_pwd=?";
+			String sql = "SELECT m_nick FROM member WHERE m_email=? and m_pwd=?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, m_email);
 			ps.setString(2,  m_pwd);
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				//이메일, 비밀번호가 일치하는 정보가 있는 경우이므로 로그인처리
-				login_id = rs.getString("m_email");
+				login_id = rs.getString("m_nick");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("login_id", login_id);
 			response.sendRedirect("index.jsp");
 		}else {
-			request.setAttribute("failed", "failed");
+			request.setAttribute("failed", true);
 			RequestDispatcher rd =  request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
 		}

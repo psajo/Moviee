@@ -7,12 +7,14 @@
 		<meta charset="utf-8">
 		<title>영화 어때? 최고의 영화 추천 및 리뷰 사이트</title>
 		<link rel="stylesheet" href="./resources/css/index.css" />
+		<link rel="stylesheet" href="./resources/css/header.css" />
 		<!-- <script type="text/javascript" src="movieApiGet.js"></script>  -->
 	</head>
 
 <!-- 상단바 영역   -->
 	<body>
-		<jsp:include page="./header.jsp"/>
+		<%@include file="./header.jsp" %>
+		
 <!-- 인덱스 메인 영역    -->
 		<div class = "main" >
 			<div class ="main_content">

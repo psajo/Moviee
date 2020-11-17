@@ -102,9 +102,11 @@
 		padding: 0 15px 0;
 		float : left;
 	}
-	#section a{
-		color : #3181FF;
+	a{
 		text-decoration: none;
+	}
+	.member_manage a{
+		color : #3181FF;
 	}
 </style>
 <title>로그인</title>
@@ -119,7 +121,7 @@
 		m_pwd="";
 	}
 %>
-<body>
+<body onload=alertFailed()>
 	<section>
 		<div id="section">
 			<h1 id="section_header">
@@ -146,20 +148,21 @@
 		</div>
 	</section>
 <%
-	String failed = (String)request.getAttribute("failed");
-	if (failed == null) {
-		failed="";
+	Object o = request.getAttribute("failed");
+	boolean failed = true;
+	if(o ==null) {
+		failed = false;
+	}else {
+		failed =true;
 	}
 %>
 <script>
-	var failed ="<%=failed%>";
 	function alertFailed() {
-		if(failed !="") {
+		if(<%=failed%>) {
 			alert("가입하지 않은 회원이거나 잘못된 비밀번호 입니다.");
 			document.getElementById("m_email").focus();
 		}
 	}
-	window.onload=alertFailed;
 </script>
 </body>
 
