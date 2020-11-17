@@ -3,5 +3,6 @@
 <%
 	String status = (String)request.getAttribute("login_result");
 	System.out.println("test: "+status);
+	System.out.println(request.getParameter("m_email"));
 	out.print(status);
 %>

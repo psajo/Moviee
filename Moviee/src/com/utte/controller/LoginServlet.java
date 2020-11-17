@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.SendResult;
 
 import com.utte.dao.MemberDAO;
 
@@ -22,15 +24,14 @@ public class LoginServlet extends HttpServlet {
 		String m_email =request.getParameter("m_email");
 		String m_pwd = request.getParameter("m_pwd");
 		String login_id = MemberDAO.login(m_email, m_pwd);
+		System.out.println("login_id : " +login_id);
 		if(login_id != null) {
-			System.out.println(login_id);
-			request.setAttribute("login_result", login_id);
-			request.getRequestDispatcher("loginstatus.jsp").forward(request, response);
+			HttpSession session =  request.getSession();
+			session.setAttribute("login_id", login_id);
+			response.sendRedirect("index.jsp");
 		}else {
-			System.out.println("!");
-			request.setAttribute("login_result", "f");
-			System.out.println(request.getAttribute("login_result"));
-			RequestDispatcher rd =  request.getRequestDispatcher("loginstatus.jsp");
+			request.setAttribute("failed", "failed");
+			RequestDispatcher rd =  request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
 		}
 		
