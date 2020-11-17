@@ -1,9 +1,9 @@
 package com.utte.beans;
 
 
-public class ReviewBean {	
+public class Review {	
 	//테이블명 : review
-	//컬렴명 : r_memId, r_movieId, r_contents, r_star, r_date
+	//컬럼명 : r_memId, r_movieId, r_contents, r_star, r_date
 	private String r_memId;
 	private String r_movieId;
 	private String r_contents;
