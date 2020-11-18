@@ -141,6 +141,7 @@
 					<div class="find_password"><a href="./find.html">비밀번호를 잊으셨나요?</a></div>
 					<div class="signup"><a href="./singup.html">회원가입</a></div>
 				</div>
+				<input type="hidden" id="uri" name="uri" value="${param.uri }">
 			</form>
 			<p class="space_or"><span>다른 로그인</span></p>
 			<div class="kakao_btn"><a href=""><img src="./resources/our_images/kakaologo.png" class="kakaologo">카카오톡으로 로그인</a></div>

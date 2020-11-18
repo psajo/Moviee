@@ -23,12 +23,13 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String m_email =request.getParameter("m_email");
 		String m_pwd = request.getParameter("m_pwd");
+		String uri = request.getParameter("uri");
 		String login_id = MemberDAO.login(m_email, m_pwd);
 		System.out.println("login_id : " +login_id);
 		if(login_id != null) {
 			HttpSession session =  request.getSession();
 			session.setAttribute("login_id", login_id);
-			response.sendRedirect("index.jsp");
+			response.sendRedirect(uri);
 		}else {
 			request.setAttribute("failed", true);
 			RequestDispatcher rd =  request.getRequestDispatcher("login.jsp");

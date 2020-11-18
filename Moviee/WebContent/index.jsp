@@ -7,7 +7,6 @@
 		<meta charset="utf-8">
 		<title>영화 어때? 최고의 영화 추천 및 리뷰 사이트</title>
 		<link rel="stylesheet" href="./resources/css/index.css" />
-		<link rel="stylesheet" href="./resources/css/header.css" />
 		<!-- <script type="text/javascript" src="movieApiGet.js"></script>  -->
 	</head>
 
