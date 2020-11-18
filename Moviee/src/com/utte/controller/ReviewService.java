@@ -6,8 +6,9 @@ import com.utte.dao.ReviewDAO;
 public class ReviewService {
 	ReviewDAO dao = new ReviewDAO();
 	
-	public void reviewInsert(Review review) {
-		dao.insertReview(review);
+	public int reviewInsert(Review review) {
+		int val = dao.insertReview(review);	
+		return val;
 	}
-
+	
 }
