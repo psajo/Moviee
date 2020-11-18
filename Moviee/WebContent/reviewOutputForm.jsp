@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>review test!</title>
+<title>Review Output Form :</title>
 </head>
 <body>
-
-
+	<h3> 리뷰 등록 완료 :) </h3>
 </body>
 </html>
