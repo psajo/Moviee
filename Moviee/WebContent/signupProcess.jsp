@@ -7,14 +7,15 @@
 	String m_email = request.getParameter("user_id");
 	mvo.setM_email(m_email);
 	String m_pwd = request.getParameter("user_pwd");
-	mvo.setM_pwd("user_pwd");
+	mvo.setM_pwd(m_pwd);
 	String m_nick = request.getParameter("user_nick");
-	mvo.setM_nick("user_nick");
+	mvo.setM_nick(m_nick);
 	String[] favs = request.getParameterValues("user_fav");
 	mvo.setM_fav1(favs[0]);
-	mvo.setM_fav1(favs[1]);
-	mvo.setM_fav1(favs[2]);
+	mvo.setM_fav2(favs[1]);
+	mvo.setM_fav3(favs[2]);
 	int ret = MemberDAO.signUp(mvo);
+	System.out.println(mvo.getM_email());
 	if(ret ==0) {
 		out.print("alert('회원가입 실패');");
 		response.sendRedirect("signup.jsp");
