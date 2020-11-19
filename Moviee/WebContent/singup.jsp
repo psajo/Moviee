@@ -104,6 +104,9 @@
 		color: red;
 		font-size: 14px;
 	}
+	#fav_result {
+		color : red;
+	}
 </style>
 <title>회원가입</title>
 </head>

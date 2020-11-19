@@ -18,7 +18,7 @@ public class NickDupChkServlet extends HttpServlet {
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String m_nick = request.getParameter("m_nick");
-		boolean isDup = MemberDAO.dup_email(m_nick);
+		boolean isDup = MemberDAO.dup_nick(m_nick);
 		if(isDup) {
 			//중복인경우
 			response.getWriter().print("dup");

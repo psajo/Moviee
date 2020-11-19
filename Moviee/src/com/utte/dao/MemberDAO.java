@@ -70,21 +70,21 @@ public class MemberDAO {
 		}
 		return isDup;
 	}
-	public static String login(String m_email, String m_pwd) {
-		String login_id = null;
+	public static boolean dup_nick(String m_nick) {
 		Connection conn =null;
 		PreparedStatement ps=null;
 		ResultSet rs = null;
+		boolean isDup = true;
 		try {
 			conn = MyConnection.getConnection();
-			String sql = "SELECT m_nick FROM member WHERE m_email=? and m_pwd=?";
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, m_email);
-			ps.setString(2,  m_pwd);
-			rs = ps.executeQuery();
-			if(rs.next()) {
-				//이메일, 비밀번호가 일치하는 정보가 있는 경우이므로 로그인처리
-				login_id = rs.getString("m_nick");
+			String sql = "SELECT m_nick FROM member WHERE m_nick=?";//사용자 입력에 따른 변수를 ?로!
+			ps = conn.prepareStatement(sql); //ps얻는것
+			ps.setString(1, m_nick); //?채우는 아이
+			rs = ps.executeQuery(); //쿼리 실행결과를 resultSet에 저장
+			if(rs.next()) { //다음을 가르켰을 때    while문일 때도 rs.next 적어주기
+				isDup = true; //무언가 있으면 T
+			}else {
+				isDup = false; //비어있으면 F
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -100,6 +100,43 @@ public class MemberDAO {
 				e2.printStackTrace();
 			}
 		}
-		return login_id;
+		return isDup;
+	}
+	public static Member login(String m_email, String m_pwd) {
+		Member mvo = null;
+		Connection conn =null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		try {
+			conn = MyConnection.getConnection();
+			String sql = "SELECT * FROM member WHERE m_email=? and m_pwd=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, m_email);
+			ps.setString(2,  m_pwd);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				//이메일, 비밀번호가 일치하는 정보가 있는 경우이므로 로그인처리
+				mvo = new Member();
+				mvo.setM_email(rs.getString("m_email"));
+				mvo.setM_nick(rs.getString("m_nick"));
+				mvo.setM_fav1(rs.getString("m_fav1"));
+				mvo.setM_fav2(rs.getString("m_fav2"));
+				mvo.setM_fav3(rs.getString("m_fav3"));
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if( conn != null)
+					conn.close();
+				if(ps != null)
+					ps.close();
+				if(rs!=null)
+					rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return mvo;
 	}
 }

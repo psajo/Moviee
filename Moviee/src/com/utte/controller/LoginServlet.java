@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.SendResult;
 
+import com.utte.beans.Member;
 import com.utte.dao.MemberDAO;
 
 /**
@@ -23,16 +24,15 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String m_email =request.getParameter("m_email");
 		String m_pwd = request.getParameter("m_pwd");
-		String uri = request.getParameter("uri");
-		String login_id = MemberDAO.login(m_email, m_pwd);
-		System.out.println("login_id : " +login_id);
-		if(login_id != null) {
+		String uri =(String)request.getSession().getAttribute("uri");
+		Member mvo = MemberDAO.login(m_email, m_pwd);
+		if(mvo != null) {
+			System.out.println("m_nick : "  +mvo.getM_nick());
 			HttpSession session =  request.getSession();
-			session.setAttribute("login_id", login_id);
+			session.setAttribute("mvo", mvo);
 			System.out.println("uri:"+uri);
 			response.sendRedirect(uri);
-		}else {
-			System.out.println("uri:"+uri);
+		}else{
 			request.setAttribute("failed", true);
 			RequestDispatcher rd =  request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
