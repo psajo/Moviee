@@ -23,6 +23,7 @@ public class MemberDAO {
 			ps.setString(5, mvo.getM_fav2());
 			ps.setString(6, mvo.getM_fav3());
 			ret = ps.executeUpdate(); //sql 실행 결과를 ret(return)에 저장
+			conn.commit();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace(); // e로 오류 받아서 오류 어디서 발생했는지 콘솔에 띄우기
 		}finally {

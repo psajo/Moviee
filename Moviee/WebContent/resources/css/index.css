@@ -8,37 +8,7 @@
 }
 	
 a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 없애주기 */
-.header { 
-		text-align: center;
-		border-bottom: 2px solid #E91213;
-}
-.navbar{
-	background:#FFFFFF;
-	position: fixed; top: 0;  width: 100%;   /* 스크롤 내려도 상단바 고정하기 */
-	margin: 0 auto;
-	display:flex;
-	justify-content: space-between;
-	align-items: center;
-	font-size: 24px;
-	color : #E91213;
-}
-.navbar_logo{ margin-left:50px; }
-.nav_menu{
-			display : flex;
-			list-style: none;
-			padding-left: 0;
-			margin-right:50px;
-		}
-.nav_menu li {
-			padding : 8px 12px;
-		}
-.searchbox{
-			font-size: 20px;
-			border-color: #E91213;
-			border-radius: 3px;
-			width: 400px;
-			height: 40px;
-			vertical-align: middle;}
+
 			
 .main{
 	background:#000;    /* 배경 검정 */

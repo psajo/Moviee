@@ -112,6 +112,9 @@
 <title>로그인</title>
 </head>
 <%
+	String uri =  request.getParameter("uri");
+	session.setAttribute("uri", uri);
+	System.out.println(uri);
 	String m_email = (String)request.getParameter("m_email");
 	String m_pwd = (String)request.getParameter("m_pwd");
 	if(m_email == null) {
@@ -138,8 +141,8 @@
 				<div class="input_area"><input type="submit" title="로그인" alt="로그인" value="로그인" class="btn_login" id="btn_login"></div>
 				<div class="auto_login"><input type="checkbox" value="ok" id="lgch" name="lgch">로그인 상태 유지</div>
 				<div class="member_manage">
-					<div class="find_password"><a href="./find.html">비밀번호를 잊으셨나요?</a></div>
-					<div class="signup"><a href="./singup.html">회원가입</a></div>
+					<div class="find_password"><a href="./find.jsp">비밀번호를 잊으셨나요?</a></div>
+					<div class="signup"><a href="./singup.jsp">회원가입</a></div>
 				</div>
 				<input type="hidden" id="uri" name="uri" value="${param.uri }">
 			</form>

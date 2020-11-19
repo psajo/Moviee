@@ -29,8 +29,10 @@ public class LoginServlet extends HttpServlet {
 		if(login_id != null) {
 			HttpSession session =  request.getSession();
 			session.setAttribute("login_id", login_id);
+			System.out.println("uri:"+uri);
 			response.sendRedirect(uri);
 		}else {
+			System.out.println("uri:"+uri);
 			request.setAttribute("failed", true);
 			RequestDispatcher rd =  request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
