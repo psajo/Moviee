@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +54,7 @@
 	}
 	
 </style>
-<title>회원가입</title>
+<title>íìê°ì</title>
 </head>
 <body>
 	<header>
@@ -61,28 +63,28 @@
 	<section>
 		<div id="section">
 			<h1 class="titletext">
-				내정보
+				ë´ì ë³´
 			</h1>
 			<div class="wrapper">
 				<div class="infobox">
-					<div class="commontext">아이디</div>
+					<div class="commontext">ìì´ë</div>
 					<div class="info_area">test@test.com</div>
-					<div class="commontext">비밀번호</div>
-					<div class="info_area"><input type="button" class="mybtn" value="비밀번호 재설정" onclick=""></div>
+					<div class="commontext">ë¹ë°ë²í¸</div>
+					<div class="info_area"><input type="button" class="mybtn" value="ë¹ë°ë²í¸ ì¬ì¤ì " onclick=""></div>
 				</div>
 				<div class="infobox">
-					<div class="commontext">총 리뷰 수</div>
+					<div class="commontext">ì´ ë¦¬ë·° ì</div>
 					<div class="info_area">100</div>
 					<div class="info_table">
 						<table>
 							<tr>
-								<th>장르</th><th>내 리뷰 갯수</th>
+								<th>ì¥ë¥´</th><th>ë´ ë¦¬ë·° ê°¯ì</th>
 							</tr>							
 							<tr>
-								<td>공포</td><td>9</td>
+								<td>ê³µí¬</td><td>9</td>
 							</tr>
 							<tr>
-								<td>액션</td><td>7</td>
+								<td>ì¡ì</td><td>7</td>
 							</tr>
 						</table>
 					</div>
