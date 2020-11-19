@@ -239,7 +239,7 @@
 		}
 	}
 	function checkFav() {
-		console.log(user_fav[0]);
+		console.log("취미0번재 : " +user_fav[0]);
 	}
 	
 	function checkNick() {
