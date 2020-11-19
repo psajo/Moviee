@@ -5,7 +5,7 @@
 	
 	Member mvo = (Member)session.getAttribute("mvo");
 %>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://kit.fontawesome.com/7878469e76.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="./resources/css/header.css" />
 	<script>
 	window.onload=function() {
@@ -24,8 +24,6 @@
 			</div>
 			<form action="<%if (mvo==null) {out.print("./login.jsp");}else {out.print("LogoutServlet");} %>" method="post" name="navbarForm">
 				<ul class="nav_menu">
-					<li><a href="">홈</a></li>
-					<li><a href="">게시판</a></li>
 					<%if (mvo ==null) { %>
 					<li><a href="javascript:document.navbarForm.submit()">로그인</a></li>
 					<%}else { %>
