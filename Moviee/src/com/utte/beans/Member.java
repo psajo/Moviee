@@ -9,6 +9,7 @@ public class Member{
 	private String m_email;
 	private String m_pwd;
 	private String m_nick;
+	private String m_profile;
 	private String m_fav1;
 	private String m_fav2;
 	private String m_fav3;
@@ -29,6 +30,12 @@ public class Member{
 	}
 	public void setM_nick(String m_nick) {
 		this.m_nick = m_nick;
+	}
+	public String getM_profile() {
+		return m_profile;
+	}
+	public void setM_profile(String m_profile) {
+		this.m_profile = m_profile;
 	}
 	public String getM_fav1() {
 		return m_fav1;
