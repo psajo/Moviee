@@ -1,4 +1,4 @@
---moveDB SQL
+﻿--moveDB SQL
 
 --member 테이블
 CREATE TABLE member(
@@ -6,9 +6,9 @@ CREATE TABLE member(
     m_pwd VARCHAR2(30) NOT NULL,
     m_nick VARCHAR2(30) UNIQUE NOT NULL,
     m_profile VARCHAR2(200) NULL,
-    m_fav1 VARCHAR2(30) NOT NULL,
-    m_fav2 VARCHAR2(30) NOT NULL,
-    m_fav3 VARCHAR2(30) NOT NULL
+    m_fav1 VARCHAR2(30) NULL,
+    m_fav2 VARCHAR2(30) NULL,
+    m_fav3 VARCHAR2(30) NULL
 );
 --review 시퀀스
 create SEQUENCE r_reviewId_seq start with 1;
