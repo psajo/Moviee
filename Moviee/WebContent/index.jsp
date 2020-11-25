@@ -1,49 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="com.utte.beans.Movie"%>
+<%@page import="com.utte.beans.Member"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <!-- 타이틀 및 메타데이터 -->
 	<head>
 		<meta charset="utf-8">
 		<title>영화 어때? 최고의 영화 추천 및 리뷰 사이트</title>
-		<link rel="stylesheet" href="./resources/css/index.css" />
-		<!-- <script type="text/javascript" src="movieApiGet.js"></script>  -->
+		<link rel="stylesheet" href="./index01.css" />
 	</head>
 
 <!-- 상단바 영역   -->
 	<body>
 		<%@include file="./header.jsp" %>
 		
+		
 <!-- 인덱스 메인 영역    -->
 		<div class = "main" >
 			<div class ="main_content">
-				<div id="main1-1">
-					<p>최근 별점이 제일 높은 영화</p>
-					<img src="./resources/ext_images/samplePoster1.png" width="300" height="400">
-					<p>도굴</p>
-					<p>별점 : 4.5</p>
-					<div class="starRating">
- 						<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-					</div>
-				</div>
-				<div id="main1-2">
-					<p>최근 리뷰가 많은 영화</p>
-					<img src="./resources/ext_images/samplePoster2.png" width="300" height="400">
-					<p>삼토반</p>
-					<p>리뷰수 : 440 </p>
-					<div class="starRating">
- 						<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-					</div>
-				</div>
-				<div id="main1-3">
-					<p>최근 추천지수가 가장 높은 영화</p>
-					<img src="./resources/ext_images/samplePoster3.png" width="300" height="400">
-					<p>노트북</p>
-					<p>추천지수 : 10000</p>
-					<div class="starRating">
- 						<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-					</div>
-				</div>
+				
+					<% List<Movie> list = (List<Movie>)request.getAttribute("movielist"); %>
+				    <% Member mb =(Member)session.getAttribute("mvo");
+				    System.out.print("test: "+list.size());
+			    	for(Movie m : list) {%>
+			    		<div class="main_movie">
+			    		<%if (mb!=null) { %>
+				    		<p><%= mb.getM_nick() %>님이 좋아하는 <%= mb.getM_fav1() %> 영화</p>
+				    	<%}else{ %>
+				    		<p>추천지수가 높은 영화</p>
+				    	<%} %>
+							<a herf = "review.jsp?mv_id=<%=m.getMv_id() %>"><img src="<%=m.getMv_posterpath() %>" width="300" height="400"></a>
+							<p><%=m.getMv_title() %> </p>
+							<p>개봉일 : <%=m.getMv_releasedate() %></p>
+							<p>추천지수 : <%=m.getMv_votecount() %></p>
+							<div class="starRating">
+		 						  <span class="starR1 on" value="0.5"></span>
+								  <span class="starR2" value="1"></span>
+								  <span class="starR1" value="1.5"></span>
+								  <span class="starR2" value="2"></span>
+								  <span class="starR1" value="2.5"></span>
+								  <span class="starR2" value="3"></span>
+								  <span class="starR1" value="3.5"></span>
+								  <span class="starR2" value="4"></span>
+								  <span class="starR1" value="4.5"></span>
+								  <span class="starR2" value="5"></span>
+								  <p>별점 주기 클릭</p>
+							</div>
+						</div>
+			    	<%}%>
+				
 			</div>
 			<div class="main_content2">
 				<div id="main2-1">
@@ -64,16 +70,5 @@
 		</div>
 
 <!-- 하단 정보 텍스트 영역    -->
-		<footer>
-			<div class="intro">
-			<!-- Contact -->
-				<p class="title">팀프로젝트 영화어때</p>
-				주소 : (07702) 서울특별시 강서구 화곡로 179<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대한상공회의소 서울기술교육센터 403호<br>
-				팀명 : 영화어때<br>
-				조원 : 박상종 이재선 박지원<br>
-				문의 : psajo@naver.com
-			</div>
-		</footer>
 	</body>
 </html>
