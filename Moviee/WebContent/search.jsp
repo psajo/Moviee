@@ -22,11 +22,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title>영화 어때? 최고의 영화 추천 및 리뷰 사이트</title>
-		<link rel="stylesheet" href="./resources/css/index.css" />
+		<link rel="stylesheet" href="./resources/css/index02.css" />
 	</head>
 
 <!-- 상단바 영역   -->
-	<body>
+	<body class="indexbody">
 		<div class="header">
 				<div class ="navbar">
 						<div class="navbar_logo">
@@ -91,7 +91,7 @@
 								<i class="fa fa-heart" aria-hidden="true"></i> ♡ Like
 								</button>
 		                    </div>
-	                    <div> <!-- posterData -->
+	                    </div> <!-- posterData -->
 	               	</div> <!-- search list -->
 	               	 <%} %>
               </div><!-- search list wrapper : 반복으로 생긴 list들을 감싸주는 역할 -->
