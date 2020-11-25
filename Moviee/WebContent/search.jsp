@@ -27,20 +27,20 @@
 
 <!-- 상단바 영역   -->
 	<body>
-	<div class="header">
-			<div class ="navbar">
-					<div class="navbar_logo">
-						<a href="IndexServlet"><img src="./resources/our_images/mylogo.png" alt="로고"></a>
-					</div>
-					<form class="search" method="get">
-						<input type="search" class="searchbox" name="searchWord" placeholder="영화를 검색하세요">
-						<button  href="search.jsp" action="submit" class="searchbtn" ><span></span></button>
-					</form>
-					<ul class="nav_menu">
-						<li><a href="IndexServlet">홈</a></li>
-					</ul>
-			</div> <!-- navbar  -->
-	</div>  <!-- header  -->
+		<div class="header">
+				<div class ="navbar">
+						<div class="navbar_logo">
+							<a href="IndexServlet"><img src="./resources/our_images/mylogo.png" alt="로고"></a>
+						</div>
+						<form class="search" method="get">
+							<input type="search" class="searchbox" name="searchWord" placeholder="영화를 검색하세요">
+							<button  href="search.jsp" action="submit" class="searchbtn" ><span></span></button>
+						</form>
+						<ul class="nav_menu">
+							<li><a href="IndexServlet">홈</a></li>
+						</ul>
+				</div> <!-- navbar  -->
+		</div>  <!-- header  -->
 
 <!-- 인덱스 메인 영역    -->
 		<div class = "main" >
@@ -61,40 +61,39 @@
 					<p>검색 옵션을 변경해서 다시 검색해 보세요.</p>
 				</div>  <!-- search_null  -->
 	
-		  <%}else{
-	            while(rs.next()){ %>
+		  <%}else{%>
 				<div class = "search_list_wrapper">
-				<div class = "search_list">
-				    <% posterAdd = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/"+ rs.getString("mv_posterpath"); %>
-				    <div class="poster">
-				    	<a href="getTest.jsp?mv_id=<%=rs.getString("mv_id")%>"><img src="<%= posterAdd%>" width="300" height="400" ></a>
-				    </div>
-				    
-					<div class="posterData">
-						<p><%= rs.getString("mv_title") %></p>
-						<p>개봉일 : <%= rs.getDate("mv_releasedate") %></p>
-						<p>추천지수 : <%=rs.getInt("mv_votecount") %></p>
-					    <div class="starRating">
-	 						  <span class="starR1 on" value="0.5"></span>
-							  <span class="starR2" value="1"></span>
-							  <span class="starR1" value="1.5"></span>
-							  <span class="starR2" value="2"></span>
-							  <span class="starR1" value="2.5"></span>
-							  <span class="starR2" value="3"></span>
-							  <span class="starR1" value="3.5"></span>
-							  <span class="starR2" value="4"></span>
-							  <span class="starR1" value="4.5"></span>
-							  <span class="starR2" value="5"></span>
-							  <p>별점 주기 클릭</p>
-						</div>
-						<div class="like-content">
-							<button class="btn-secondary like-review">
-							<i class="fa fa-heart" aria-hidden="true"></i> ♡ Like
-							</button>
-	                    </div>
-                    <div> <!-- posterData -->
-               	</div> <!-- search list -->
-               	 <%} %>
+					<% while(rs.next()){ %>
+					<div class = "search_list">
+					    <% posterAdd = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/"+ rs.getString("mv_posterpath"); %>
+					    <div class="poster">
+					    	<a href="getTest.jsp?mv_id=<%=rs.getString("mv_id")%>"><img src="<%= posterAdd%>" width="300" height="400" ></a>
+					    </div>
+						<div class="posterData">
+							<p><%= rs.getString("mv_title") %></p>
+							<p>개봉일 : <%= rs.getDate("mv_releasedate") %></p>
+							<p>추천지수 : <%=rs.getInt("mv_votecount") %></p>
+						    <div class="starRating">
+		 						  <span class="starR1 on" value="0.5"></span>
+								  <span class="starR2" value="1"></span>
+								  <span class="starR1" value="1.5"></span>
+								  <span class="starR2" value="2"></span>
+								  <span class="starR1" value="2.5"></span>
+								  <span class="starR2" value="3"></span>
+								  <span class="starR1" value="3.5"></span>
+								  <span class="starR2" value="4"></span>
+								  <span class="starR1" value="4.5"></span>
+								  <span class="starR2" value="5"></span>
+								  <p>별점 주기 클릭</p>
+							</div>
+							<div class="like-content">
+								<button class="btn-secondary like-review">
+								<i class="fa fa-heart" aria-hidden="true"></i> ♡ Like
+								</button>
+		                    </div>
+	                    <div> <!-- posterData -->
+	               	</div> <!-- search list -->
+	               	 <%} %>
               </div><!-- search list wrapper : 반복으로 생긴 list들을 감싸주는 역할 -->
 		 <% }%>
 		</div><!-- search_result -->

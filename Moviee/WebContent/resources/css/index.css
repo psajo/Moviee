@@ -23,8 +23,6 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
 	margin: 0 auto;
 	text-align: center;
 	padding:150px 100px 70px 70px;  /* 안쪽 테두리 여백 주기 */
-
-	/*height: 1500px;*/
 }
 
 
@@ -61,19 +59,17 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
             width:35px; height: 35px;  border: 0;  vertical-align: middle;}
             
 /*  footer  */
-footer{position:static; background-color: #f0f0f0; margin:0 auto;  bottom: 0;  width: 100%; }
+footer{ position:static; background-color: #f0f0f0; margin:0 auto;  bottom: 0;  width: 100%; }
 .intro{
-	padding-top: 20px; padding-bottom: 20px; 
+	padding-top: 20px;
+	padding-bottom: 20px; 
 	padding-left: 100px;
 	display: block;
 	width:700px;
 	color: #666666;
-				text-align : left;
+	text-align : left;
 }
-.intro > p {
-			font-size: 18px;
-			font-weight: bold;
-}
+.intro > p { font-size: 18px; font-weight: bold; }
 
 
 /* 별점 버튼  */
@@ -155,13 +151,12 @@ footer{position:static; background-color: #f0f0f0; margin:0 auto;  bottom: 0;  w
 	width: 800px;
 	height: 400px;
 	margin : 30px auto; 
-
 	display:flex;
     flex-direction: columm;
 
 }
 .poster{ display:block; width: 300px;	height: 400px; float:left;}
-.posterData{ display:block; width: 400px; height: 400px; background:pink; float:left;	vertical-align: middle;}
+.posterData{ display:block; width: 400px; height: 400px; background:pink; float:left;}
  
  
  
