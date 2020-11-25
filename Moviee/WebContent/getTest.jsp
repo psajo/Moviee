@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%= request.getParameter("mv_id") %>
+MV_ID : <%= request.getParameter("mv_id") %>
+<img src="./resources/our_images/oracle moviedata.png" />
+<!-- index.jsp랑 search.jsp의 영화상세페이지 링크  -->
 
 </body>
 </html>

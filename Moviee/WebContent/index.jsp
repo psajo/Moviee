@@ -19,7 +19,7 @@
 <!-- 인덱스 메인 영역    -->
 		<div class = "main" >
 			<div class ="main_content">
-				
+					<%if(request.getAttribute("movielist")==null){%><jsp:forward page="IndexServlet" /><%}%>
 					<% List<Movie> list = (List<Movie>)request.getAttribute("movielist"); %>
 				    <% Member mb =(Member)session.getAttribute("mvo");
 				    System.out.print("test: "+list.size());
@@ -30,7 +30,7 @@
 				    	<%}else{ %>
 				    		<p>추천지수가 높은 영화</p>
 				    	<%} %>
-							<a herf = "review.jsp?mv_id=<%=m.getMv_id() %>"><img src="<%=m.getMv_posterpath() %>" width="300" height="400"></a>
+							<a href = "getTest.jsp?mv_id=<%=m.getMv_id()%>"><img src="<%=m.getMv_posterpath() %>" width="290" height="387"></a>
 							<p><%=m.getMv_title() %> </p>
 							<p>개봉일 : <%=m.getMv_releasedate() %></p>
 							<p>추천지수 : <%=m.getMv_votecount() %></p>
@@ -49,9 +49,10 @@
 							</div>
 						</div>
 			    	<%}%>
-				
 			</div>
-			<div class="main_content">
+			
+			
+			<div class="main_content2">
 				<div id="main2-1">
 					<p>최근 상영작</p>
 					<img src="./resources/ext_images/samplePoster1.png" width="300" height="400">
@@ -66,9 +67,15 @@
 				<p> 리뷰 3 <br/>
 				<textarea rows="5" cols="70" style="resize:none;" >와 정말 최고의 영화 정말 재미있어요 ^^ 추천합니다 </textarea>
 				</div>
-			</div>
-		</div>
+			</div> <!-- main_content2 -->
+			
+			
+		</div><!-- main(content) 끝!! -->
 
 <!-- 하단 정보 텍스트 영역    -->
 	</body>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="./resources/js/search.js"/>
+	<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 </html>

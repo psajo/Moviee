@@ -39,9 +39,8 @@
 					<ul class="nav_menu">
 						<li><a href="IndexServlet">홈</a></li>
 					</ul>
-			</div>
-		</div>
-		</div>
+			</div> <!-- navbar  -->
+	</div>  <!-- header  -->
 
 <!-- 인덱스 메인 영역    -->
 		<div class = "main" >
@@ -60,14 +59,13 @@
 					<p>검색어의 단어 수를 줄이거나, 보다 일반적인 검색어로 다시 검색해 보세요.</p>
 					<p>두 단어 이상의 검색어인 경우, 띄어쓰기를 확인해 보세요.</p>
 					<p>검색 옵션을 변경해서 다시 검색해 보세요.</p>
-				</div>
+				</div>  <!-- search_null  -->
 	
 		  <%}else{
 	            while(rs.next()){ %>
 				<div class = "search_list_wrapper">
 				<div class = "search_list">
-				    <% posterAdd = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/"+ rs.getString("mv_posterpath"); 
-				       System.out.println(posterAdd);%>
+				    <% posterAdd = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/"+ rs.getString("mv_posterpath"); %>
 				    <div class="poster">
 				    	<a href="getTest.jsp?mv_id=<%=rs.getString("mv_id")%>"><img src="<%= posterAdd%>" width="300" height="400" ></a>
 				    </div>
@@ -94,13 +92,13 @@
 							<i class="fa fa-heart" aria-hidden="true"></i> ♡ Like
 							</button>
 	                    </div>
-                    <div>
+                    <div> <!-- posterData -->
                	</div> <!-- search list -->
-                </div>
-		 <%} }%>
-			
-		</div>
-	</div>
+               	 <%} %>
+              </div><!-- search list wrapper : 반복으로 생긴 list들을 감싸주는 역할 -->
+		 <% }%>
+		</div><!-- search_result -->
+	</div><!-- main 끝  -->
 <!-- 하단 정보 텍스트 영역    -->
 		<footer>
 			<div class="intro">
@@ -116,7 +114,7 @@
 	</body>
 
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="./resources/search.js"/>
+	<script type="text/javascript" src="./resources/js/search.js"/>
 	<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 </html>

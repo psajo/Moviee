@@ -147,6 +147,7 @@ public class MovieDAO {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) { //rs -1부터 시작 값 꺼내기 전에 커서 이동
+				mv_id = rs.getString("mv_id");
 				String mv_title= rs.getString("mv_title");
 			    String mv_posterpath = rs.getString("mv_posterpath");
 			    String mv_snapshotpath = rs.getString("mv_snapshotpath");
