@@ -66,13 +66,15 @@
 	            while(rs.next()){ %>
 				<div class = "search_list_wrapper">
 				<div class = "search_list">
-				    <% posterAdd = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/"+ rs.getString("poster_path"); 
+				    <% posterAdd = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/"+ rs.getString("mv_posterpath"); 
 				       System.out.println(posterAdd);%>
-				    <div class="poster"><img src="<%= posterAdd%>" width="300" height="400"></div>
+				    <div class="poster">
+				    	<a href="getTest.jsp?mv_id=<%=rs.getString("mv_id")%>"><img src="<%= posterAdd%>" width="300" height="400" ><a>
+				    </div>
 					<div class="posterData">
-						<p><%= rs.getString("title") %></p>
-						<p>개봉일 : <%= rs.getDate("release_date") %></p>
-						<p>추천지수 : <%=rs.getInt("vote_count") %></p>
+						<p><%= rs.getString("mv_title") %></p>
+						<p>개봉일 : <%= rs.getDate("mv_releasedate") %></p>
+						<p>추천지수 : <%=rs.getInt("mv_votecount") %></p>
 					    <div class="starRating">
 	 						  <span class="starR1 on" value="0.5"></span>
 							  <span class="starR2" value="1"></span>
@@ -91,10 +93,10 @@
 							<i class="fa fa-heart" aria-hidden="true"></i> ♡ Like
 							</button>
 	                    </div>
-                     <div>
-                 </div> <!-- search list -->
-                  </div>
-			 <%} }%>
+                    <div>
+               	</div> <!-- search list -->
+                </div>
+		 <%} }%>
 			
 		</div>
 	</div>
