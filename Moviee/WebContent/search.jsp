@@ -1,3 +1,4 @@
+<%@page import="com.utte.dao.MyConnection"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.DriverManager"%>
@@ -10,11 +11,8 @@
 %>
 <%  searchWord = "";
     searchWord = request.getParameter("searchWord");
-	String url = "jdbc:oracle:thin:@20.194.19.37:1521:movieDB";
-	String sql ="SELECT * FROM movie WHERE title LIKE '%" + searchWord +"%'";
-	System.out.println(sql);
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	Connection conn = DriverManager.getConnection(url,"scott","1234");
+	String sql ="SELECT * FROM movie WHERE mv_title LIKE '%" + searchWord +"%'";
+	Connection conn = MyConnection.getConnection(); //db랑 연결해주는 객체
 	Statement st = conn.createStatement();
 	rs = st.executeQuery(sql);
 %>
@@ -32,7 +30,7 @@
 	<div class="header">
 			<div class ="navbar">
 					<div class="navbar_logo">
-						<a href="IndexServlet"><img src="./resources/images/mylogo.png" alt="로고"></a>
+						<a href="IndexServlet"><img src="./resources/our_images/mylogo.png" alt="로고"></a>
 					</div>
 					<form class="search" method="get">
 						<input type="search" class="searchbox" name="searchWord" placeholder="영화를 검색하세요">
