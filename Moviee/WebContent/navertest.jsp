@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-	System.out.println("navertest.jsp!");
+	System.out.println("navertest.jsp!!");
 %>
 하이
 </body>
