@@ -66,7 +66,7 @@
 							</div>
 							<div class="like-content">
 								<button class="btn-secondary like-review">
-								<i class="fa fa-heart" aria-hidden="true"></i> ♡ Like
+								<i class="far fa-heart" aria-hidden="true"></i>  Like
 								</button>
 		                    </div>
 	                    </div> <!-- posterData -->

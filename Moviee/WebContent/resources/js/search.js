@@ -1,7 +1,7 @@
 $(document).ready(function(){
 // 좋아요 버튼 쿼리
 $('.like-content').one('click','.like-review', function(e) {
-$(this).html('<i class="fa fa-heart" aria-hidden="true"></i> ♥ You liked this');
+$(this).html('<i class="fa fa-heart" aria-hidden="true"></i> You liked this');
 $(this).children('.fa-heart').addClass('animate-like');
 /*  5 .like-content 클릭시 
  *  6 .like-content 의 html를 변경 (간단하게 문구만 변경)
