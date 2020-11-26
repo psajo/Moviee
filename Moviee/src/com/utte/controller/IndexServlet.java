@@ -27,10 +27,15 @@ public class IndexServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member mvo = (Member)session.getAttribute("mvo");
 		List<Movie> list= null ;
+		System.out.println("mvo:"+mvo);
 		
 		list = MovieDAO.getMovie(mvo);
+		Movie m2 = MovieDAO.getMovie();
+		
 		System.out.println("IndexServ : " + list.size());
+		
 		request.setAttribute("movielist", list);
+		request.setAttribute("m2", m2);
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 

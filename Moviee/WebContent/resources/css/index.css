@@ -9,12 +9,16 @@
 		  url('/fonts/Jalnan.ttf');
 		}}
 		
-body{background:black; font-family:Jalnan; font-size: 20px; font-weight:bold; text-align: center;}
+body{
+	background:black; 
+	font-family:Jalnan; 
+	font-size: 20px; 
+	font-weight:bold; 
+	text-align: center; 
+	margin: 0 auto;
+	}
 a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 없애주기 */
-.header { 
-		text-align: center;
-		border-bottom: 2px solid #E91213;
-}
+
 .main{
 	background:black;    /* 배경 검정 */
 	color: white;       /* 글씨 흰색 */
@@ -24,52 +28,6 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
 	text-align: center;
 	padding:150px 100px 70px 70px;  /* 안쪽 테두리 여백 주기 */
 }
-
-
-/*  헤더      */
-.navbar{
-	background:#FFFFFF;
-	position: fixed; top: 0;  width: 100%;   /* 스크롤 내려도 상단바 고정하기 */
-	margin: 0 auto;
-	display:flex;
-	justify-content: space-between;
-	align-items: center;
-	font-size: 24px;
-	color : #E91213;
-}
-.navbar_logo{ margin-left:50px; }
-.nav_menu{
-			display : flex;
-			list-style: none;
-			padding-left: 0;
-			margin-right:50px;
-		}
-.nav_menu li {
-			padding : 8px 12px;
-}
-.searchbox{
-			font-size: 20px;
-			border-color: #E91213;
-			border-radius: 3px;
-			width: 400px;
-			height: 40px;
-			vertical-align: middle;
-			cursor: pointer;}
-.searchbtn{ background: url(./our_images/icon2.png) no-repeat;  
-            width:35px; height: 35px;  border: 0;  vertical-align: middle;}
-            
-/*  footer  */
-footer{ position:static; background-color: #f0f0f0; margin:0 auto;  bottom: 0;  width: 100%; }
-.intro{
-	padding-top: 20px;
-	padding-bottom: 20px; 
-	padding-left: 100px;
-	display: block;
-	width:700px;
-	color: #666666;
-	text-align : left;
-}
-.intro > p { font-size: 18px; font-weight: bold; }
 
 
 /* 별점 버튼  */
@@ -134,8 +92,10 @@ footer{ position:static; background-color: #f0f0f0; margin:0 auto;  bottom: 0;  
 
 /* search 화면 적용(content)   */
 .search_null{
+	display:block;
+	position: static;
 	width: 800px;
-    height: 500px;
+    height: 600px;
     text-align: center;
 	font-size: 60 px;
 	font-weight: bold;
@@ -156,7 +116,7 @@ footer{ position:static; background-color: #f0f0f0; margin:0 auto;  bottom: 0;  
 
 }
 .poster{ display:block; width: 300px;	height: 400px; float:left;}
-.posterData{ display:block; width: 400px; height: 400px; background:pink; float:left;}
+.posterData{ display:block; width: 400px; height: 400px;  float:left;}
  
  
  

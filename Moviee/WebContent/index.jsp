@@ -8,24 +8,24 @@
 	<head>
 		<meta charset="utf-8">
 		<title>영화 어때? 최고의 영화 추천 및 리뷰 사이트</title>
-		<link rel="stylesheet" href="./resources/css/index.css" />
+		<link rel="stylesheet" href="./resources/css/index.css"/>
 	</head>
 
 <!-- 상단바 영역   -->
 	<body>
-		<%@include file="./header.jsp" %>	
+				<%@include file="./header.jsp" %>	
 <!-- 인덱스 메인 영역    -->
 		<div class = "main" >
 			<div class ="main_content">
-					<%if(request.getAttribute("movielist")==null){%><jsp:forward page="IndexServlet" /><%}%>
+					<%if(request.getAttribute("movielist")==null){%><jsp:forward page="IndexServlet"/><%}%>
 					<% List<Movie> list = (List<Movie>)request.getAttribute("movielist"); %>
 				    <% Member mb =(Member)session.getAttribute("mvo");
-				    System.out.print("test: "+list.size());
+
 			    	for(Movie m : list) {%>
 			    		<div class="main_movie">
-			    		<%if (mb!=null) { %>
+			    		<%if (mb!=null) { System.out.print("test1");%>
 				    		<p><%= mb.getM_nick() %>님이 좋아하는 <%= mb.getM_fav1() %> 영화</p>
-				    	<%}else{ %>
+				    	<%}else{ System.out.print("test2"); %>
 				    		<p>추천지수가 높은 영화</p>
 				    	<%} %>
 							<a href = "getTest.jsp?mv_id=<%=m.getMv_id()%>"><img src="<%=m.getMv_posterpath() %>" width="290" height="387"></a>
@@ -52,10 +52,12 @@
 			
 			<div class="main_content2">
 				<div id="main2-1">
-					<p>최근 상영작</p>
-					<img src="./resources/ext_images/samplePoster1.png" width="300" height="400">
-					<p>노트북</p>
-					<p>리뷰 수 : 10000</p>
+					<p>추천 지수가 가장 높은 영화</p>
+							<% Movie m2 = (Movie)request.getAttribute("m2"); %>
+					<img src="<%=m2.getMv_posterpath() %>" width="300" height="400">
+					<p><%= m2.getMv_title() %></p>
+					<p>추천수 : <%= m2.getMv_votecount() %></p>
+					<p>리뷰 수 : - </p>
 				</div>
 				<div id="main2-2">
 				<p> 리뷰 1  <br/>
@@ -73,7 +75,7 @@
 
 <!-- 하단 정보 텍스트 영역    -->
 	</body>
-	<%@include file="./footer.html" %>	
+	<%@include file="./footer.jsp" %>	
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="./resources/js/search.js"/>
 	<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
