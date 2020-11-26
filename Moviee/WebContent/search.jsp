@@ -1,3 +1,4 @@
+<%@page import="com.utte.dao.MovieDAO"%>
 <%@page import="com.utte.dao.MyConnection"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Statement"%>
@@ -51,24 +52,25 @@
 							<p><%= rs.getString("mv_title") %></p>
 							<p>개봉일 : <%= rs.getDate("mv_releasedate") %></p>
 							<p>추천지수 : <%=rs.getInt("mv_votecount") %></p>
-						    <div class="starRating">
-		 						  <span class="starR1 on" value="0.5"></span>
-								  <span class="starR2" value="1"></span>
-								  <span class="starR1" value="1.5"></span>
-								  <span class="starR2" value="2"></span>
-								  <span class="starR1" value="2.5"></span>
-								  <span class="starR2" value="3"></span>
-								  <span class="starR1" value="3.5"></span>
-								  <span class="starR2" value="4"></span>
-								  <span class="starR1" value="4.5"></span>
-								  <span class="starR2" value="5"></span>
-								  <p>별점 주기 클릭</p>
+							
+							<div class="starRate" >
+								<%   double a = MovieDAO.getMovieStar(rs.getString("mv_id"));
+									 int b = (int)a*2;
+									 
+									 for(int i = 1; i<11; i++){
+										if(i%2!=0 && i<=b){%>
+			 						 		 <span class="starR1 on" ></span>
+			 						    <%}else if(i%2==0 && i<=b){%>
+									         <span class="starR2 on" ></span>
+									    <%}else if(i%2!=0 && i>=b){%>
+									  		<span class="starR1" ></span>
+									  	<%}else {%>
+									  		<span class="starR2" ></span>
+									    <%}
+									    }%>
+							<p>별점 : <%= a %></p>
 							</div>
-							<div class="like-content">
-								<button class="btn-secondary like-review">
-								<i class="far fa-heart" aria-hidden="true"></i>  Like
-								</button>
-		                    </div>
+							
 	                    </div> <!-- posterData -->
 	               	</div> <!-- search list -->
 	               	 <%} %>

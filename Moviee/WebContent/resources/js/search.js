@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	
+	
 // 좋아요 버튼 쿼리
 $('.like-content').one('click','.like-review', function(e) {
 $(this).html('<i class="fa fa-heart" aria-hidden="true"></i> You liked this');
@@ -25,5 +27,7 @@ $('.starRating span').click(function(){
  * 백그라운드 설정시 floating 및 위치 설정으로 회색으로 지정
  * 제이쿼리로 클릭했을때 백그라운드 위치를 바꿔 채워진 별로 보이는 class(.on)을 추가해주는 함수 구현
  **/
+
+
 
 });

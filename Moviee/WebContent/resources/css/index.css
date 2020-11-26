@@ -31,7 +31,12 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
 
 
 /* 별점 버튼  */
-.starRating{
+.starRate{
+	display: block;
+    width: 150px;
+    margin: 0 auto;
+}
+.starRating {
 	display: block;
     width: 150px;
     margin: 0 auto;

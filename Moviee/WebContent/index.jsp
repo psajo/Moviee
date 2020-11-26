@@ -1,7 +1,9 @@
+<%@page import="com.utte.dao.MovieDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.utte.beans.Movie"%>
 <%@page import="com.utte.beans.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <!-- 타이틀 및 메타데이터 -->
@@ -32,18 +34,22 @@
 							<p><%=m.getMv_title() %> </p>
 							<p>개봉일 : <%=m.getMv_releasedate() %></p>
 							<p>추천지수 : <%=m.getMv_votecount() %></p>
-							<div class="starRating">
-		 						  <span class="starR1 on" value="0.5"></span>
-								  <span class="starR2" value="1"></span>
-								  <span class="starR1" value="1.5"></span>
-								  <span class="starR2" value="2"></span>
-								  <span class="starR1" value="2.5"></span>
-								  <span class="starR2" value="3"></span>
-								  <span class="starR1" value="3.5"></span>
-								  <span class="starR2" value="4"></span>
-								  <span class="starR1" value="4.5"></span>
-								  <span class="starR2" value="5"></span>
-								  <p>별점 주기 클릭</p>
+							<div class="starRate" >
+								<%   double a = MovieDAO.getMovieStar(m.getMv_id());
+									 int b = (int)a*2;
+									 
+									 for(int i = 1; i<11; i++){
+										if(i%2!=0 && i<=b){%>
+			 						 		 <span class="starR1 on" ></span>
+			 						    <%}else if(i%2==0 && i<=b){%>
+									         <span class="starR2 on" ></span>
+									    <%}else if(i%2!=0 && i>=b){%>
+									  		<span class="starR1" ></span>
+									  	<%}else {%>
+									  		<span class="starR2" ></span>
+									    <%}
+									    }%>
+							<p>별점 : <%= a %></p>
 							</div>
 						</div>
 			    	<%}%>
