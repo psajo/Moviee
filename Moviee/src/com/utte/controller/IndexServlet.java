@@ -13,7 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import com.utte.beans.Member;
 import com.utte.beans.Movie;
+import com.utte.beans.Review;
 import com.utte.dao.MovieDAO;
+import com.utte.dao.ReviewDAO;
 
 /**
  * Servlet implementation class IndexServlet
@@ -27,15 +29,19 @@ public class IndexServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member mvo = (Member)session.getAttribute("mvo");
 		List<Movie> list= null ;
+		Movie m2 = null;
+		List<Review> r = null;
 		System.out.println("mvo:"+mvo);
 		
 		list = MovieDAO.getMovie(mvo);
-		Movie m2 = MovieDAO.getMovie();
+		m2 = MovieDAO.getMovie();
+		r = ReviewDAO.getReviews();
 		
 		System.out.println("IndexServ : " + list.size());
 		
 		request.setAttribute("movielist", list);
 		request.setAttribute("m2", m2);
+		request.setAttribute("r", r);
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 

@@ -1,5 +1,7 @@
+<%@page import="com.utte.dao.ReviewDAO"%>
 <%@page import="com.utte.dao.MovieDAO"%>
 <%@page import="java.util.List"%>
+<%@page import="com.utte.beans.Review"%>
 <%@page import="com.utte.beans.Movie"%>
 <%@page import="com.utte.beans.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -60,18 +62,38 @@
 				<div id="main2-1">
 					<p>추천 지수가 가장 높은 영화</p>
 							<% Movie m2 = (Movie)request.getAttribute("m2"); %>
+							<% List<Review> r = (List<Review>)request.getAttribute("r"); %>
 					<img src="<%=m2.getMv_posterpath() %>" width="300" height="400">
 					<p><%= m2.getMv_title() %></p>
-					<p>추천수 : <%= m2.getMv_votecount() %></p>
-					<p>리뷰 수 : - </p>
+					<p>추천수 : <%= m2.getMv_votecount() %> &nbsp;&nbsp; 리뷰 수 : <%=MovieDAO.getReviewCount(m2.getMv_id()) %> </p>
+					<div class="starRate" >
+								<%   double a = MovieDAO.getMovieStar(m2.getMv_id());
+									 int b = (int)a*2;
+									 
+									 for(int i = 1; i<11; i++){
+										if(i%2!=0 && i<=b){%>
+			 						 		 <span class="starR1 on" ></span>
+			 						    <%}else if(i%2==0 && i<=b){%>
+									         <span class="starR2 on" ></span>
+									    <%}else if(i%2!=0 && i>=b){%>
+									  		<span class="starR1" ></span>
+									  	<%}else {%>
+									  		<span class="starR2" ></span>
+									    <%}
+									    }%>
+							<p>별점 : <%= a %></p>
+					</div>
 				</div>
 				<div id="main2-2">
-				<p> 리뷰 1  <br/>
-				<textarea rows="5" cols="70" style="resize:none;">와 정말 최고의 영화 정말 재미있어요 ^^ 추천합니다 </textarea> 
-				<p> 리뷰 2 <br/>
-				<textarea rows="5" cols="70" style="resize:none;">와 정말 최고의 영화 정말 재미있어요 ^^ 추천합니다 </textarea>
-				<p> 리뷰 3 <br/>
-				<textarea rows="5" cols="70" style="resize:none;" >와 정말 최고의 영화 정말 재미있어요 ^^ 추천합니다 </textarea>
+				<%  int count1 = 0;
+				for(Review r1 : r) {%>
+				<p> 작성자 : <%= r1.getM_nick() %> &nbsp;&nbsp;&nbsp;별점: <%= r1.getR_star() %>&nbsp;&nbsp;&nbsp; 작성일: <%= r1.getR_date() %> <br/>
+				<textarea rows="5" cols="70" style="resize:none;"><%= r1.getR_contents() %> </textarea> 
+				
+				<%
+					count1++;
+				   if(count1==3){break;}
+				} %>
 				</div>
 			</div> <!-- main_content2 -->
 			
