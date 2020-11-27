@@ -41,6 +41,7 @@ public class MypageServlet extends HttpServlet {
 		/*MyPage.jsp에 입력된 정보 가져오기*/
 		String currPwd = request.getParameter("currPwd");
 		String newPwd = request.getParameter("newPwd");
+		String checkPwd = request.getParameter("checkPwd");
 		
 		Member temp = dao.select(m_email, currPwd);
 		
@@ -51,10 +52,12 @@ public class MypageServlet extends HttpServlet {
 		
 		//1. 기존비밀번호 새 비밀번호 비교
 		if(currPwd.equals(temp.getM_pwd())) {
+			System.out.println("입력한 기존 비밀번호와 DB에 저장된 비밀번호가 같습니다.");
 			//일치했다 -->업데이트
-			
-			dao.Update_password(newPwd,m_email);
-			System.out.println("일치mvo:"+mvo.getM_pwd());
+			if(newPwd.equals(checkPwd)) {
+				System.out.println("신규비밀번호 확인 끝");
+				dao.Update_password(newPwd,m_email);
+			}
 		}else {
 			//불일치
 			System.out.println("비밀번호가 맞지 않습니다.");
