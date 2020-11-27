@@ -24,20 +24,20 @@ public class MovieDAO {
 		
 		try { //예외처리
 			if(mvo != null) { //로그인 했을때 
-				System.out.println((String)(mvo.getM_fav1()));
 				conn = MyConnection.getConnection(); //이름에 맞는 클래스 찾아서 객체 생성
 				String sql="select * \r\n" + 
 						"from (select * from (select * from movie where mv_genres like ? order by mv_votecount desc) where rownum<=1) \r\n" + 
-						"    union (select * from (select * from movie where mv_genres like ? order by mv_votecount desc) where rownum<=1) \r\n" + 
-						"    union (select * from (select * from movie where mv_genres like ? order by mv_votecount desc) where rownum<=1)"; //쿼리문 준비
+						"    union all(select * from (select * from movie where mv_genres like ? order by mv_votecount desc) where rownum<=1) \r\n" + 
+						"    union all(select * from (select * from movie where mv_genres like ? order by mv_votecount desc) where rownum<=1)"; //쿼리문 준비
 				ps = conn.prepareStatement(sql);
-				ps.setString(1,"%"+mvo.getM_fav1()+"%"); 
-				System.out.println((String)(mvo.getM_fav1()));
+				
+				System.out.println((String)(mvo.getM_fav1())+(String)(mvo.getM_fav2())+(String)(mvo.getM_fav3()));
+				ps.setString(1,"%"+mvo.getM_fav1()+"%"); 				
 				ps.setString(2,"%"+mvo.getM_fav2()+"%"); 
 				ps.setString(3,"%"+mvo.getM_fav3()+"%"); 
-//				ps.setString(2,mvo.getM_fav2()); 이렇게 넣으면 '%'장르'%' 이렇게 들어가버려서 결과 안나옴 ㅠ 
-//				ps.setString(3,mvo.getM_fav3()); 
+
 				rs = ps.executeQuery();
+				
 				while(rs.next()) { //rs -1부터 시작 값 꺼내기 전에 커서 이동
 					String mv_id = rs.getString("mv_id");
 					String mv_title= rs.getString("mv_title");
