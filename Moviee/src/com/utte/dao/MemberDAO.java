@@ -144,6 +144,7 @@ public class MemberDAO {
 		//Database 접근을 위한 변수 선언
 		Connection conn =null;
 		PreparedStatement ps=null;
+		
 		int result = 0;
 		String 	sql = "UPDATE member ";
 				sql+=" SET m_pwd = ? ";

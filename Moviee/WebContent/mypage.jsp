@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>영화어때</title>
-
 <link href="./resources/css/mypage.css" rel="stylesheet" />
 </head>
 <body>
