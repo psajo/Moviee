@@ -9,22 +9,8 @@
 <link href="./resources/css/mypage.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="wrap">
-        <header class="header">
-            <div class="inner">
-                <h1 class="header__logo"><a href="#"></a></h1>
-                <div class="header__search">
-                    <div class="input__box">
-                        <input type="search" placeholder="영화를 검색하세요" />
-                    </div>
-                </div>
-                <ul class="header__menu">
-                    <li><a href="#">홈</a></li>
-                    <li><a href="#">로그인</a></li>
-                </ul>
-            </div>
-            
-        </header>
+	<%@include file="./header.jsp" %>
+    <div class="wrap">        
         <div id="container" class="mypage">
             <div class="inner">
                 <div class="mypage__profile">
@@ -33,7 +19,7 @@
                             <img src="./resources/our_images/profile_image.png" alt="프로필 이미지" />
                         </div>
                         <p class="profile__text">
-                            안녕하세요 영화광 <span class="profile__name">김철수</span>님!<br>오늘 영화 한편 어떠세요?
+                            안녕하세요 영화광 <span class="profile__name"><%=mvo.getM_nick() %></span>님!<br>오늘 영화 한편 어떠세요?
                         </p>
                     </div>
                     
@@ -49,7 +35,7 @@
                             <h4>아이디</h4>
                         </div>
                         <div class="item__cont">
-                            <p>test@test.com</p>
+                            <p><%=mvo.getM_email() %></p>
                         </div>
                     </li>
                     <li class="mypage__item item02">
@@ -107,16 +93,6 @@
     
     
     <!-- 하단 정보 텍스트 영역    -->
-		<footer>
-			<div class="intro">
-			<!-- Contact -->
-				<p class="title">팀프로젝트 영화어때</p>
-				주소 : (07702) 서울특별시 강서구 화곡로 179<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대한상공회의소 서울기술교육센터 403호<br>
-				팀명 : 영화어때<br>
-				조장 : 박상종   조원 : 이재선 박지원<br>
-				문의 : psajo@naver.com
-			</div>
-		</footer>
+	<%@include file="./footer.jsp" %>
 </body>
 </html>
