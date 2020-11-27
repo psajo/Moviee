@@ -46,7 +46,7 @@
 					<div class = "search_list">
 					    <% posterAdd = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/"+ rs.getString("mv_posterpath"); %>
 					    <div class="poster">
-					    	<a href="getTest.jsp?mv_id=<%=rs.getString("mv_id")%>"><img src="<%= posterAdd%>" width="300" height="400" ></a>
+					    	<a href = "MovieDetail?mv_id=<%=rs.getString("mv_id")%>"><img src="<%= posterAdd%>" width="300" height="400" ></a>
 					    </div>
 						<div class="posterData">
 							<% System.out.print(rs.getString("mv_id"));%>

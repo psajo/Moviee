@@ -42,7 +42,7 @@
 				    	  }else{  %>
 				    		<p>추천지수가 높은 영화</p>
 				    	<%} %>
-							<a href = "getTest.jsp?mv_id=<%=m.getMv_id()%>"><img src="<%=m.getMv_posterpath() %>" width="290" height="387"></a>
+							<a href = "MovieDetail?mv_id=<%=m.getMv_id()%>"><img src="<%=m.getMv_posterpath() %>" width="290" height="387"></a>
 							<p><%=m.getMv_title() %> </p>
 							<p>개봉일 : <%=m.getMv_releasedate() %></p>
 							<p>추천지수 : <%=m.getMv_votecount() %></p>
@@ -73,7 +73,7 @@
 					<p>추천 지수가 가장 높은 영화</p>
 							<% Movie m2 = (Movie)request.getAttribute("m2"); %>
 							<% List<Review> r = (List<Review>)request.getAttribute("r"); %>
-					<img src="<%=m2.getMv_posterpath() %>" width="300" height="400">
+					<a href = "MovieDetail?mv_id=<%=m.getMv_id()%>"><img src="<%=m2.getMv_posterpath() %>" width="300" height="400"></a>
 					<p><%= m2.getMv_title() %></p>
 					<p>추천수 : <%= m2.getMv_votecount() %> &nbsp;&nbsp; 리뷰 수 : <%=MovieDAO.getReviewCount(m2.getMv_id()) %> </p>
 					<div class="starRate" >
