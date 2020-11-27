@@ -47,60 +47,63 @@ public class ReviewDAO<Int> {
 	}
 	
 	//******* 리뷰 목록 ******//
-	public List<Review> getList(){
-		 List<Review> list = new ArrayList<Review>();
-		 Connection conn = null;
-		 PreparedStatement ps = null;
-		 ResultSet rs = null;
-	        
+	public static List<Review> getReviews(){
+		List<Review> list = null;
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+	     
 		try { //예외처리
 			conn = MyConnection.getConnection(); //이름에 맞는 클래스 찾아서 객체 생성
-			String sql="INSERT INTO review(R_REVIEWID, M_NICK, MV_ID, R_CONTENTS, R_STAR, R_DATE) VALUES(r_reviewId_seq.nextval,?,?,?,?,to_char(sysdate))";
+			String sql="SELECT * FROM (SELECT * FROM review ORDER BY r_date desc) WHERE rownum <=5";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
-			while(rs.next()) {
-				Review review = new Review();
-				ps.setString(1, review.getM_nick());
-				ps.setInt(2, review.getMv_id());
-				ps.setString(3, review.getR_contents());
-				ps.setInt(4, review.getR_star());
-				
-				list.add(review);
+			if(rs.next()) {
+				list= new ArrayList<Review>();
+				do {
+					Review rvo = new Review();
+					rvo.setR_reviewId(rs.getInt("r_reviewId"));
+					rvo.setM_nick(rs.getString("m_nick"));
+					rvo.setMv_id(rs.getInt("mv_id"));
+					rvo.setR_contents(rs.getString("r_contents"));
+					rvo.setR_star(rs.getInt("r_star"));
+					rvo.setR_date(rs.getString("r_date"));
+					list.add(rvo);
+				}while(rs.next());
+			}	
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace(); // e로 오류 받아서 오류 어디서 발생했는지 콘솔에 띄우기
+		} finally {
+			try {
+				if(conn!= null) {
+					conn.close();
 				}
-				
-			} catch (ClassNotFoundException | SQLException e) {
-				e.printStackTrace(); // e로 오류 받아서 오류 어디서 발생했는지 콘솔에 띄우기
-			} finally {
-				try {
-					if(conn!= null) {
-						conn.close();
-					}
-					if(ps != null) {
-						ps.close();
-					}
-				}catch (Exception e) {
-					// TODO: handle exception
-					e.printStackTrace();
+				if(ps != null) {
+					ps.close();
 				}
+			}catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
 			}
-			return list;
-			}
+		}
+		return list;
+	}
 		
 
 
 	//******* 리뷰 삭제 *******//
-	public void delReview(int R_REVIEWID) {
+	public static int delReview(int R_REVIEWID) {
 	
 		Connection conn = null; //db랑 연결해주는 객체
 		PreparedStatement ps = null; //sql문장을 실행시키는 객체
-		
+		int ret =-1;
 		try { //예외처리
 			conn = MyConnection.getConnection(); //이름에 맞는 클래스 찾아서 객체 생성
-			String sql="delete from review"+"where R_REVIEWID=?";
+			String sql="delete from review where R_REVIEWID=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, R_REVIEWID);
-			ps.execute();
+			ret =ps.executeUpdate();
 			ps.close();			
 			conn.commit();
 		} catch (ClassNotFoundException | SQLException e) {
@@ -118,6 +121,7 @@ public class ReviewDAO<Int> {
 				e.printStackTrace();
 			}
 		}
+		return ret;
 	}
 }
 	
