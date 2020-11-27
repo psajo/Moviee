@@ -39,22 +39,24 @@
                         </div>
                     </li>
                     <li class="mypage__item item02">
+                    <form action="MypageServlet" method="post">
                         <div class="item__title">
                             <h4>비밀번호 변경</h4>
                             <button>변경하기</button>
                         </div>
                         <div class="item__cont">
                             <div class="input__box">
-                                <input type="password" placeholder="현재 비밀번호"/>
+                                <input type="password" placeholder="현재 비밀번호" name="currPwd"/>
                             </div>
                             <div class="input__box">
-                                <input type="password" placeholder="새 비밀번호" />
+                                <input type="password" placeholder="새 비밀번호" name="newPwd"/>
                             </div>
                             <div class="input__box">
-                                <input type="password" placeholder="새 비밀번호 확인" />
+                                <input type="password" placeholder="새 비밀번호 확인" name="checkPwd"/>
                             </div>
                             
                         </div>
+                       </form>
                     </li>
                     <li class="mypage__item item03">
                         <div class="item__title">
