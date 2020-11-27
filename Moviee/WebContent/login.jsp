@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.security.SecureRandom" %>
+<%@ page import="java.math.BigInteger" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -147,7 +150,21 @@
 				<input type="hidden" id="uri" name="uri" value="${param.uri }">
 			</form>
 			<p class="space_or"><span>다른 로그인</span></p>
-			<div class="kakao_btn"><a href=""><img src="./resources/our_images/kakaologo.png" class="kakaologo">카카오톡으로 로그인</a></div>
+
+
+  <%
+    String clientId = "Hahw0dqC7zJNSSxrE35v";//애플리케이션 클라이언트 아이디값";
+    String redirectURI = URLEncoder.encode("http://20.194.19.37/Moviee/callback.jsp", "UTF-8");
+    SecureRandom random = new SecureRandom();
+    String state = new BigInteger(130, random).toString();
+    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+    apiURL += "&client_id=" + clientId;
+    apiURL += "&redirect_uri=" + redirectURI;
+    apiURL += "&state=" + state;
+    session.setAttribute("state", state);
+ %>
+
+			<div class="kakao_btn"><a href="<%=apiURL%>"><img src="./resources/our_images/kakaologo.png" class="kakaologo">카카오톡으로 로그인</a></div>
 			<div class="naver_btn"><a href=""><img src="./resources/our_images/naverlogo.png" class="naverlogo">네이버로 로그인</a></div>
 		</div>
 	</section>
