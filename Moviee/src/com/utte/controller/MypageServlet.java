@@ -37,7 +37,6 @@ public class MypageServlet extends HttpServlet {
 		/*Session에 담긴 정보 가져오기*/
 		HttpSession session = request.getSession();
 		Member mvo = (Member)session.getAttribute("mvo");
-		MemberDAO dao = new MemberDAO();
 		String m_email = mvo.getM_email();
 		
 		/*MyPage.jsp에 입력된 정보 가져오기*/
@@ -45,7 +44,7 @@ public class MypageServlet extends HttpServlet {
 		String newPwd = request.getParameter("newPwd");
 		String checkPwd = request.getParameter("checkPwd");
 		
-		Member temp = dao.select(m_email, currPwd);
+		Member temp = MemberDAO.select(m_email, currPwd);
 		
 		System.out.println("A 비밀번호:"+currPwd);
 		System.out.println("B 비밀번호:"+newPwd);
@@ -54,6 +53,7 @@ public class MypageServlet extends HttpServlet {
 		System.out.println("아이디:"+m_email);
 		
 		//1. 기존비밀번호 새 비밀번호 비교
+		response.setContentType("text/html;charset=utf-8");
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		
@@ -61,17 +61,17 @@ public class MypageServlet extends HttpServlet {
 			System.out.println("입력한 기존 비밀번호와 DB에 저장된 비밀번호가 같습니다.");
 			//일치했다 -->업데이트
 			if(newPwd.equals(checkPwd)) {
-				script.println("alert('비밀번호 변경 완료')");
+				script.println("alert('비밀번호 변경 완료');");
 
-				int result = dao.Update_password(newPwd,m_email);
+				int result = MemberDAO.Update_password(newPwd,m_email);
 				response.sendRedirect(request.getContextPath()+"/mypage.jsp"); 
 			}else {
-				script.println("alert('비밀번호 변경 실패')");
+				script.println("alert('비밀번호 변경 실패');");
 				response.sendRedirect(request.getContextPath()+"/mypage.jsp"); 
 			}
 		}else {
 			//불일치
-			script.println("alert('비밀번호가 맞지 않습니다.')");
+			script.println("alert('비밀번호가 맞지 않습니다.');");
 			response.sendRedirect(request.getContextPath()+"/mypage.jsp"); 
 		}
 		script.println("</script>");

@@ -127,14 +127,14 @@ public class ReviewDAO<Int> {
 		return list;
 	}
 	//첫페이지에서 사용하는 최신리뷰 5개//
-	public static List<Review> getReviews(){
+	public static List<Review> getReviewsByMb(String m_nick){
 		List<Review> list = null;
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try { 
 			conn = MyConnection.getConnection(); 
-			String sql="SELECT * FROM (SELECT * FROM review ORDER BY r_date desc) WHERE rownum <=5";
+			String sql="SELECT * FROM (SELECT * FROM review WHERE m_nick = ? ORDER BY r_date DESC) WHERE rownum <=5";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			

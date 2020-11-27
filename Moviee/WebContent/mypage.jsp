@@ -19,6 +19,7 @@
                             <img src="./resources/our_images/profile_image.png" alt="프로필 이미지" />
                         </div>
                         <p class="profile__text">
+
                             안녕하세요 영화광 <span class="profile__name"><%=mvo.getM_nick() %></span>님!<br>오늘 영화 한편 어떠세요?
                         </p>
                     </div>

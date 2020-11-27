@@ -71,12 +71,11 @@
 					<%if (mvo ==null) { %>
 					<li><a onclick="javascript:document.navbarForm.submit()">로그인</a></li>
 					<%}else { %>
-					<li><a href="mypage.jsp"><%=mvo.getM_nick()%></a>
+					<li><a href="mypage.jsp?uri="><%=mvo.getM_nick()%></a>
 					<li><a href="javascript:document.navbarForm.submit()">로그아웃</a>
 					<%} %>
 				</ul>
 				<input type="hidden" value="${param.uri }" id="uri" name="uri">
-				<input type="hidden" value="${param.page }" id="page" name="page">
 			</form>
 		</div>
 	</div>
