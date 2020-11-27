@@ -20,6 +20,7 @@
 	st.setString(1,"%"+searchWord+"%");
 	rs = st.executeQuery();
 	%>
+	
 <!DOCTYPE html>
 <html>
 <!-- 타이틀 및 메타데이터 -->

@@ -99,7 +99,6 @@
 				for(Review r1 : r) {%>
 				<p> 작성자 : <%= r1.getM_nick() %> &nbsp;&nbsp;&nbsp;별점: <%= r1.getR_star() %>&nbsp;&nbsp;&nbsp; 작성일: <%= r1.getR_date() %> <br/>
 				<textarea rows="5" cols="70" style="resize:none;"><%= r1.getR_contents() %> </textarea> 
-				
 				<%
 					count1++;
 				   if(count1==3){break;}

@@ -35,7 +35,7 @@ public class IndexServlet extends HttpServlet {
 		
 		list = MovieDAO.getMovie(mvo);
 		m2 = MovieDAO.getMovie();
-		r = ReviewDAO.getReviews();
+		r = ReviewDAO.getReviewsByMvId(m2.getMv_id(),1);
 		
 		System.out.println("IndexServ : " + list.size());
 		

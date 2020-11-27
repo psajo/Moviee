@@ -35,7 +35,6 @@ public class MovieDAO {
 				ps.setString(1,"%"+mvo.getM_fav1()+"%"); 				
 				ps.setString(2,"%"+mvo.getM_fav2()+"%"); 
 				ps.setString(3,"%"+mvo.getM_fav3()+"%"); 
-
 				rs = ps.executeQuery();
 				
 				while(rs.next()) { //rs -1부터 시작 값 꺼내기 전에 커서 이동
