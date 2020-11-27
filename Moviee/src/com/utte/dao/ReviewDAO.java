@@ -90,7 +90,7 @@ public class ReviewDAO<Int> {
 		List<Review> list = null;
 		try { 
 			conn = MyConnection.getConnection(); 
-			String sql="SELECT * FROM (SELECT * FROM review WHERE mv_id=?) WHERE rownum >=? and rownum<= ?";
+			String sql="SELECT * FROM (SELECT * FROM review WHERE mv_id=? ORDER BY r_date DESC) WHERE rownum >=? and rownum<= ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1,mv_id);
 			ps.setInt(2, paging.getStartRownum());
