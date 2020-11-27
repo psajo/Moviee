@@ -56,7 +56,6 @@
 		document.getElementById("uri").value = location.pathname + location.search;
 		console.log(location.pathname + location.search);
 	};
-	
 	</script>
 	<div class="header">
 		<div class ="navbar">

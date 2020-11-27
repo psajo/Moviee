@@ -142,11 +142,9 @@ public class MemberDAO {
 	public static int Update_password(String newPwd, String m_email ) {
 		System.out.println(newPwd+m_email);
 		//Database 접근을 위한 변수 선언
-		
 		Connection conn =null;
 		PreparedStatement ps=null;
 		int result = 0;
-		
 		String 	sql = "UPDATE member ";
 				sql+=" SET m_pwd = ? ";
 				sql+=" WHERE m_email=? ";

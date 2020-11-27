@@ -137,7 +137,6 @@ public class ReviewDAO<Int> {
 			String sql="SELECT * FROM (SELECT * FROM review WHERE m_nick = ? ORDER BY r_date DESC) WHERE rownum <=5";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
-			
 			if(rs.next()) {
 				list= new ArrayList<Review>();
 				do {
