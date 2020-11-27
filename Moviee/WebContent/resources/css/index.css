@@ -141,9 +141,28 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
 }
 .main_content2 > div {	margin-top:40px; margin-bottom:80px; padding: 30px;   }  
 
+/* 영화 상세 정보 적용 */
+#movie_detail{
+	position: static;
+	width: 800px;
+	height: 400px;
+	margin : 30px auto; 
+}
+#overview{
+	position: static;
+	width: 800px;
+	height: 180px;
+	margin : 30px auto; 
+	text-align: center;
 
+}
+.movie_review{
+	position: static;
+	width: 800px;
+	height: 400px;
+	margin : 30px auto; 
 
-
+}
 
 
 

@@ -17,37 +17,51 @@
 		<%@include file="./header.jsp" %>	
 <body>
 			<div class = "main" >
-				<div class="main_content2">
-							<div id="main2-1">
-								<p>추천 지수가 가장 높은 영화</p>
-										<% Movie m = (Movie)request.getAttribute("m"); %>
-										<% List<Review> r = (List<Review>)request.getAttribute("r"); %>
+				<div class="search_list_wrapper">
+							<div id="movie_detail">
+								<% Movie m = (Movie)request.getAttribute("m"); %>
+								<% List<Review> r = (List<Review>)request.getAttribute("r"); %>
+								<div class="poster">
 								<img src="<%=m.getMv_posterpath() %>" width="300" height="400">
-								<p><%= m.getMv_title() %></p>
-								<p>배우 : <%= m.getMv_casting() %></p>
-								<p>감독 : <%= m.getMv_crew() %></p>
-								<p>추천수 : <%= m.getMv_votecount() %></p>
-								<p>리뷰 수 : <%=MovieDAO.getReviewCount(m.getMv_id()) %> </p>
-								<div class="starRate" >
-											<%   double a = MovieDAO.getMovieStar(m.getMv_id());
-												 int b = (int)a*2;
-												 
-												 for(int i = 1; i<11; i++){
-													if(i%2!=0 && i<=b){%>
-						 						 		 <span class="starR1 on" ></span>
-						 						    <%}else if(i%2==0 && i<=b){%>
-												         <span class="starR2 on" ></span>
-												    <%}else if(i%2!=0 && i>=b){%>
-												  		<span class="starR1" ></span>
-												  	<%}else {%>
-												  		<span class="starR2" ></span>
-												    <%}
-												    }%>
-										<p>별점 : <%= a %></p>
 								</div>
+								<div class="posterData">
+									<p><%= m.getMv_title() %></p>
+									<p>배우 : <%= m.getMv_casting() %></p>
+									<p>감독 : <%= m.getMv_crew() %></p>
+									<p>추천수 : <%= m.getMv_votecount() %></p>
+									<p>리뷰 수 : <%=MovieDAO.getReviewCount(m.getMv_id()) %> </p>
+									<div class="starRate" >
+												<%   double a = MovieDAO.getMovieStar(m.getMv_id());
+													 int b = (int)a*2;
+													 
+													 for(int i = 1; i<11; i++){
+														if(i%2!=0 && i<=b){%>
+							 						 		 <span class="starR1 on" ></span>
+							 						    <%}else if(i%2==0 && i<=b){%>
+													         <span class="starR2 on" ></span>
+													    <%}else if(i%2!=0 && i>=b){%>
+													  		<span class="starR1" ></span>
+													  	<%}else {%>
+													  		<span class="starR2" ></span>
+													    <%}
+													    }%>
+											<p>별점 : <%= a %></p>
+									</div>
+								</div> <!-- posterdata -->
+							</div>  <!-- movie_detail -->
+							<div id="overview"> 줄거리 :  <%=m.getMv_overview() %>
 							</div>
-							<div id="main2-2"> 줄거리 :  <%=m.getMv_overview() %></div>
-							<div class="main_content2">
+							<div class="movie_review">
+							<% Member mb =(Member)session.getAttribute("mvo");
+							   if(mb != null){%>
+				             	<form method="post" action="">
+					             	<h3>Review</h3>
+									<button>수정</button>
+									<button>삭제</button>
+									<button>등록</button> <br/>
+									<textarea name=review_content cols="50" rows="5"></textarea>	       	
+			             		</form>
+							  <% }%>
 							<%  int count1 = 0;
 							for(Review r1 : r) {%>
 							<p> 작성자 : <%= r1.getM_nick() %> &nbsp;&nbsp;&nbsp;별점: <%= r1.getR_star() %>&nbsp;&nbsp;&nbsp; 작성일: <%= r1.getR_date() %> <br/>
@@ -57,7 +71,8 @@
 							   if(count1==3){break;}
 							} %>
 							</div>
-				</div> <!-- main_moviedetail -->
+				</div> <!-- wrapper -->
+							
 			</div> <!-- main -->
 </body>
 	<%@include file="footer.jsp" %>	
