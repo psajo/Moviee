@@ -1,6 +1,8 @@
 package com.utte.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,23 +47,34 @@ public class MypageServlet extends HttpServlet {
 		
 		Member temp = dao.select(m_email, currPwd);
 		
-		System.out.println("입력 비밀번호:"+currPwd);
-		System.out.println("신규 비밀번호:"+newPwd);
-		System.out.println("저장 비밀번호:"+temp.getM_pwd());
+		System.out.println("A 비밀번호:"+currPwd);
+		System.out.println("B 비밀번호:"+newPwd);
+		System.out.println("C 비밀번호:"+checkPwd);
+		System.out.println("DB 비밀번호:"+temp.getM_pwd());
 		System.out.println("아이디:"+m_email);
 		
 		//1. 기존비밀번호 새 비밀번호 비교
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		
 		if(currPwd.equals(temp.getM_pwd())) {
 			System.out.println("입력한 기존 비밀번호와 DB에 저장된 비밀번호가 같습니다.");
 			//일치했다 -->업데이트
 			if(newPwd.equals(checkPwd)) {
-				System.out.println("신규비밀번호 확인 끝");
-				dao.Update_password(newPwd,m_email);
+				script.println("alert('비밀번호 변경 완료')");
+
+				int result = dao.Update_password(newPwd,m_email);
+				response.sendRedirect(request.getContextPath()+"/mypage.jsp"); 
+			}else {
+				script.println("alert('비밀번호 변경 실패')");
+				response.sendRedirect(request.getContextPath()+"/mypage.jsp"); 
 			}
 		}else {
 			//불일치
-			System.out.println("비밀번호가 맞지 않습니다.");
+			script.println("alert('비밀번호가 맞지 않습니다.')");
+			response.sendRedirect(request.getContextPath()+"/mypage.jsp"); 
 		}
+		script.println("</script>");
 		
 	}
 

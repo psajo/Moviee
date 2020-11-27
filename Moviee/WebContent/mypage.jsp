@@ -39,20 +39,20 @@
                         </div>
                     </li>
                     <li class="mypage__item item02">
-                    <form action="MypageServlet" method="post">
+                    <form name="myPageForm" action="MypageServlet" method="post">
                         <div class="item__title">
                             <h4>비밀번호 변경</h4>
-                            <button>변경하기</button>
+                            <button onclick="checkPassword()">변경하기</button>
                         </div>
                         <div class="item__cont">
                             <div class="input__box">
-                                <input type="password" placeholder="현재 비밀번호" name="currPwd"/>
+                                <input type="password" placeholder="현재 비밀번호" name="currPwd" id="currPwd"/>
                             </div>
                             <div class="input__box">
-                                <input type="password" placeholder="새 비밀번호" name="newPwd"/>
+                                <input type="password" placeholder="새 비밀번호" name="newPwd" id="newPwd"/>
                             </div>
                             <div class="input__box">
-                                <input type="password" placeholder="새 비밀번호 확인" name="checkPwd"/>
+                                <input type="password" placeholder="새 비밀번호 확인" name="checkPwd" id="checkPwd"/>
                             </div>
                             
                         </div>
@@ -97,4 +97,23 @@
     <!-- 하단 정보 텍스트 영역    -->
 	<%@include file="./footer.jsp" %>
 </body>
+<!-- <script>
+	var myPageForm = document.myPageForm;
+	var currPwd = myPageForm.currPwd.value;
+	var newPwd = myPageForm.newPwd.value;
+	var checkPwd = myPageForm.checkPwd.value;
+	/* 	var currPwd = $('#currPwd').val();
+	var newPwd = $('#newPwd').val();
+	var checkPwd = $('#checkPwd').val(); */
+	
+	console.log("currPwd",currPwd)
+	console.log("newPwd",newPwd)
+	console.log("checkPwd",checkPwd)
+	
+	function checkPassword() {
+		alert("currPwd : "+currPwd)
+		alert("newPwd : "+newPwd)
+		alert("checkPwd : "+checkPwd)
+	}
+</script> -->
 </html>

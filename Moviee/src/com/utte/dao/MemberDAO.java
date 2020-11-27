@@ -139,43 +139,32 @@ public class MemberDAO {
 		}
 		return mvo;
 	}
-	public void Update_password(String newPwd, String m_email ) {
+	public int Update_password(String newPwd, String m_email ) {
 		System.out.println(newPwd+m_email);
 		//Database 접근을 위한 변수 선언
-		Member mvo = null;
+		
 		Connection conn =null;
 		PreparedStatement ps=null;
 		ResultSet rs = null;
-		//Update 쿼리 실행
-		/*
-		update member set m_pwd = '1234'
-		where m_email='test';
-		 */
+		int result = 0;
+		
+		String 	sql = "UPDATE member ";
+				sql+=" SET m_pwd = ? ";
+				sql+=" WHERE m_email=? ";
 		try {
 			conn = MyConnection.getConnection();
-			String sql = "update member set m_pwd = ? where m_email=?";
 			ps = conn.prepareStatement(sql);
 			
 			ps.setString(1, newPwd);
 			ps.setString(2,  m_email);
-			ps.executeUpdate();
 			System.out.println("업데이트 성공");
-			//이메일, 비밀번호가 일치하면 비밀번호 업데이트
-			
+			return  ps.executeUpdate();
+
+			 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if( conn != null)
-					conn.close();
-				if(ps != null)
-					ps.close();
-				if(rs!=null)
-					rs.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
 		}
+		return result;
 		
 	}// The end of method
 	
@@ -204,7 +193,7 @@ public class MemberDAO {
 				mvo.setM_fav2(rs.getString(6));
 				mvo.setM_fav3(rs.getString(7));
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch ( ClassNotFoundException|SQLException e) {
 			e.printStackTrace();
 		}finally {
 			try {
