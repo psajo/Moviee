@@ -132,9 +132,8 @@ public class ReviewDAO<Int> {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-	     
-		try { //예외처리
-			conn = MyConnection.getConnection(); //이름에 맞는 클래스 찾아서 객체 생성
+		try { 
+			conn = MyConnection.getConnection(); 
 			String sql="SELECT * FROM (SELECT * FROM review ORDER BY r_date desc) WHERE rownum <=5";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();

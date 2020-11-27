@@ -9,6 +9,7 @@ public class Paging {
 	private int endPage;
 	private int startRownum;
 	private int endRownum;
+	
 	public Paging(int count) {
 		pageSize=5;//한번에 보여지는 리뷰 수
 		pageNumSize=10; // 한번에 보여지는 페이지 갯수
