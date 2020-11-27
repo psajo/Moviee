@@ -84,6 +84,7 @@
 							<p>별점 : <%= a %></p>
 					</div>
 				</div>
+				
 				<div id="main2-2">
 				<%  int count1 = 0;
 				for(Review r1 : r) {%>

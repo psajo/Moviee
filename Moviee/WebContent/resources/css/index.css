@@ -124,7 +124,6 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
 .posterData{ display:block; width: 400px; height: 400px;  float:left;}
  
  
- 
 /* index 화면 적용(content) */
 .main_content{
 	 display:flex;
@@ -133,7 +132,7 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
 	 align-items: center;
 }
 .main_movie {  margin-bottom:40px; padding: 15px; }  
-
+ 
 .main_content2{
 	 display:flex;
 	 flex-direction: row;
