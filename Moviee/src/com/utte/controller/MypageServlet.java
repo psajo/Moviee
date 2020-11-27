@@ -52,6 +52,7 @@ public class MypageServlet extends HttpServlet {
 		System.out.println("DB 비밀번호:"+temp.getM_pwd());
 		System.out.println("아이디:"+m_email);
 		
+		
 		//1. 기존비밀번호 새 비밀번호 비교
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter script = response.getWriter();
