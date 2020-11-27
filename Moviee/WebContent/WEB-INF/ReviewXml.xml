@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC " -//mybatis.org/DTD Config 3.0//EN" "mybatis-3-config.dtd" >
+<configuration>
+<!-- configuration (properties?, settings?, typeAliases?, typeHandlers?, objectFactory?, objectWrapperFactory?, reflectorFactory?, plugins?, environments?, databaseIdProvider?, mappers?) -->
+	
+	<properties resource="/driver.properties"/>
+	
+	<!-- MyBatis 설정 관련 기본 세팅 -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/><!-- Data가 Null값일 경우 처리하는 방식 (빈칸이 아니라 null로 인식)-->
+	</settings>
+	
+	
+	<!-- DB 연결 정보 선언 부분 -->
+	<!-- development : 연결 정보를 여러 개 생성하여 아이디로 구분하고, 기본으로 연결할 설정 정보를 저장 -->
+	<environments default="development">
+		<!-- DB 연결 설정 정보 선언 -->
+		<environment id="development">
+			<transactionManager type="JDBC">
+				<!-- TR을 제어하기 위한 TransactionManager와 함께 DB Connection Instance를 가져오기 위한 Data Source 포함. 
+					 TR을 누가 관리할 것인지 선택
+						 JDBC : 수동 commit, JDBC가 Commit, Rollback을 직접 처리
+						 MANAGED : 자동 commit, TR에 대해 직접적인 영향을 행사하지 않음. Container가 TR 생명주기 관리 -->
+			</transactionManager>
+			<dataSource type="POOLED">
+				<!-- 실제 DB접속에 관한 정보들을 넣는 태고
+					 type 속성은 Connection Pool을 사용할건지 안 할건지
+					 
+					 type = "UNPOOLED" / "POOLED" / "JDNI"
+					 
+					 		 UNPOOLED : DB 관련 요청이 들어올 때마다 실시간으로 Connection 객체를 open/close함.
+					 		 		  : 미리 커넥션 객체를 만들어놓는 방식이 아니므로 조금 느릴 수 있다
+					 		 		  
+					 		 POOLED	  : Connection 객체를 미리 만들어놓고 관리 → 객체를 만드는 데 시간이 걸림
+					 		 		  : 사용자 요청 시마다 DB에 연결하여 명령을 실행하고, 명령이 종료되더라도 연결 종료하지 않고 Pool에 저장하여 요청 시마다 Pool에서 Connection을 다시 꺼내 재사용.
+					 		 		  : 재사용할 Connection 없는 경우 새로운 Connection 생성
+					 		 		  : (Web Applicaton의 방법으로 Web Service에서는 Connection Pool을 반드시 이용하는 것이 좋음)
+					 		 		  
+					 		 JDNI -->
+				 
+				<!-- 연결에 필요한 정보들을 propertiy Tag로 등록 -->
+				 
+				<!-- 1. driver, url, username, password 정보들을 직접 작성하기--><!-- 
+				<property name="drive"		value="oracle.jdbc.driver.OracleDriver"/>
+				<property name="url"		value="jdbc:oracle:thin:@localhost:1521:xe"/>
+				<property name="username"	value="MyBatis"/>
+				<property name="password"	value="MyBatis"/> -->
+				 
+				<!-- 2. driver.properties 파일을 만들어 연결 -->
+				<property name="drive"		value="${driver}"/>
+				<property name="url"		value="${url}"/>
+				<property name="username"	value="${username}"/>
+				<property name="password"	value="${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+</configuration>
