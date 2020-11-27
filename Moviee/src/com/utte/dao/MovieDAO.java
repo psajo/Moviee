@@ -229,8 +229,7 @@ public class MovieDAO {
 		    } // finally 
 			return 0;
 		} 
-	
-	
+
 //리뷰수 가져오는 메소드
 		public static int getReviewCount(String mv_id) {
 				
