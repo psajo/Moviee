@@ -153,7 +153,7 @@ public class MemberDAO {
 		 */
 		try {
 			conn = MyConnection.getConnection();
-			String sql = "update member set m_pwd = '?' where m_email='?'";
+			String sql = "update member set m_pwd = ? where m_email=?";
 			ps = conn.prepareStatement(sql);
 			
 			ps.setString(1, newPwd);
