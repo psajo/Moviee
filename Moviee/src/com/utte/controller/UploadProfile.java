@@ -34,7 +34,7 @@ public class UploadProfile extends HttpServlet {
 		//닉네임으로 폴더 생성
 		if(!folder.exists()) {
 			System.out.println("폴더생성");
-			folder.mkdir();
+			folder.mkdirs();
 		}else {
 			System.out.println("폴더가 이미 존재함");
 		}

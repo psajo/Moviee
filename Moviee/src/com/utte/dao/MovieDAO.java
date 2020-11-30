@@ -230,41 +230,72 @@ public class MovieDAO {
 		} 
 
 //리뷰수 가져오는 메소드
-		public static int getReviewCount(String mv_id) {
-				
-				Connection conn = null; //db랑 연결해주는 객체
-				PreparedStatement ps = null; //sql문장을 실행시키는 객체
-				ResultSet rs = null; // sql 결과 데이터를 담는 객체	
-				
-				try { //예외처리
-					
-					conn = MyConnection.getConnection(); //이름에 맞는 클래스 찾아서 객체 생성
-					String sql="SELECT mv_id, count(mv_id) as rv_count FROM review where mv_id=? group by mv_id"; //쿼리문 준비
-					ps = conn.prepareStatement(sql);
-					ps.setString(1, mv_id);
-					rs = ps.executeQuery();
-					
-					if(rs.next()) { 
-						int rv_count= rs.getInt("rv_count");
-						return rv_count;
-					}
-					
-				}catch (ClassNotFoundException | SQLException e) {
-					e.printStackTrace(); // e로 오류 받아서 오류 어디서 발생했는지 콘솔에 띄우기
-				}finally {
-					try {
-						if( conn != null)
-							conn.close();
-						if(ps != null)
-							ps.close();
-						if(rs!=null)
-							rs.close();
-					}catch (Exception e2) {
-						e2.printStackTrace();
-					}
-			    } // finally 
-				return 0;
+	public static int getReviewCount(String mv_id) {
+			
+		Connection conn = null; //db랑 연결해주는 객체
+		PreparedStatement ps = null; //sql문장을 실행시키는 객체
+		ResultSet rs = null; // sql 결과 데이터를 담는 객체	
+		
+		try { //예외처리
+			
+			conn = MyConnection.getConnection(); //이름에 맞는 클래스 찾아서 객체 생성
+			String sql="SELECT mv_id, count(mv_id) as rv_count FROM review where mv_id=? group by mv_id"; //쿼리문 준비
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, mv_id);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) { 
+				int rv_count= rs.getInt("rv_count");
+				return rv_count;
 			}
-
+			
+		}catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace(); // e로 오류 받아서 오류 어디서 발생했는지 콘솔에 띄우기
+		}finally {
+			try {
+				if( conn != null)
+					conn.close();
+				if(ps != null)
+					ps.close();
+				if(rs!=null)
+					rs.close();
+			}catch (Exception e2) {
+				e2.printStackTrace();
+			}
+	    } // finally 
+		return 0;
+	}
+	//장르 전부다 가져오기
+	public static List<String> getGenres() {
+		List<String> list = null;
+		Connection conn = null; //db랑 연결해주는 객체
+		PreparedStatement ps = null; //sql문장을 실행시키는 객체
+		ResultSet rs = null; // sql 결과 데이터를 담는 객체	
+		
+		try { //예외처리
+			
+			conn = MyConnection.getConnection(); //이름에 맞는 클래스 찾아서 객체 생성
+			String sql="SELECT DISTINCT mv_genres FROM movie"; //쿼리문 준비
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			////
+		}catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace(); // e로 오류 받아서 오류 어디서 발생했는지 콘솔에 띄우기
+		}finally {
+			try {
+				if( conn != null)
+					conn.close();
+				if(ps != null)
+					ps.close();
+				if(rs!=null)
+					rs.close();
+			}catch (Exception e2) {
+				e2.printStackTrace();
+			}
+	    } // finally 
+		
+		return list;
+	}
+	
 
 }

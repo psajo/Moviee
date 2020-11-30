@@ -52,32 +52,69 @@
 							<div id="overview"> 줄거리 :  <%=m.getMv_overview() %>
 							</div>
 							<div class="movie_review">
-							<% Member mb =(Member)session.getAttribute("mvo");
-							   if(mb != null){%>
-				             	<form method="post" action="">
-					             	<h3>Review</h3>
-									<button>수정</button>
-									<button>삭제</button>
-									<button>등록</button> <br/>
-									<textarea name=review_content cols="50" rows="5"></textarea>	       	
-			             		</form>
-							  <% }%>
+							<% 	Member mb =(Member)session.getAttribute("mvo");
+							   	if(mb != null){
+							   		Review myreview= ReviewDAO.getReview(mb.getM_nick(), m.getMv_id());
+							   		if(myreview ==null) {%>
+						             	<form method="post" action="InsertReview">
+							             	<h3>내 리뷰 작성하기</h3>
+							             	<input type="hidden" name="m_nick" value="<%=mb.getM_nick()%>">
+							             	<input type="hidden" name="mv_id" value="<%=m.getMv_id()%>">
+							             	<input type="hidden" name="r_star" value="5">
+							             	<input type="hidden" name="uri" id="uri2">
+											<textarea name="r_contents" cols="50" rows="5"></textarea>	       	
+											<button>등록</button>
+					             		</form>
+									<%
+									}else {
+									%>
+										<form name="form2" method="post" action="DeleteReview">
+											<p> 내가 작성한 리뷰 </p>
+											별점: <%= myreview.getR_star() %>&nbsp;&nbsp;&nbsp; 작성일: <%= myreview.getR_date() %> <br/>
+											<textarea rows="5" cols="70" style="resize:none;"><%= myreview.getR_contents() %> </textarea>
+											<input type="hidden" name ="uri" id="uri3">
+											<input type="hidden" name="r_reviewId" value="<%=myreview.getR_reviewId() %>">
+											<a href="javascript:document.form2.submit();">삭제</a>
+					 					</form>				
+									<%
+										
+									}
+							   		
+						   		}%>
 							<%  int count1 = 0;
-							for(Review r1 : r) {%>
-							<p> 작성자 : <%= r1.getM_nick() %> &nbsp;&nbsp;&nbsp;별점: <%= r1.getR_star() %>&nbsp;&nbsp;&nbsp; 작성일: <%= r1.getR_date() %> <br/>
-							<textarea rows="5" cols="70" style="resize:none;"><%= r1.getR_contents() %> </textarea> 
-							<%
-								count1++;
-							   if(count1==3){break;}
-							} %>
+								if(r!=null) {
+									for(Review r1 : r) {%>
+									<p> 작성자 : <%= r1.getM_nick() %> &nbsp;&nbsp;&nbsp;별점: <%= r1.getR_star() %>&nbsp;&nbsp;&nbsp; 작성일: <%= r1.getR_date() %> <br/>
+									<textarea rows="5" cols="70" style="resize:none;"><%= r1.getR_contents() %> </textarea> 
+									<%
+										count1++;
+									   if(count1==3){break;}
+									}
+								}else {
+									%><p>리뷰 없음</p><%
+								}%>
 							</div>
 				</div> <!-- wrapper -->
 							
 			</div> <!-- main -->
 </body>
+<script>
+	window.onload=function() {
+		var uri2 =document.getElementById("uri2");
+		if(uri2 != null) {
+			uri2.value=location.pathname + location.search;
+		}
+		var uri3 =document.getElementById("uri3");
+		if(uri3 != null) {
+			uri3.value=location.pathname + location.search;
+		}
+		//document.getElementById("uri3").value = location.pathname + location.search;
+		console.log(location.pathname + location.search);
+	};
+</script>
 	<%@include file="footer.jsp" %>	
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="./resources/js/search.js"/>
+	<script type="text/javascript" src="./resources/js/search.js"></script>
 	<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 

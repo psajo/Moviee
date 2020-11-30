@@ -88,7 +88,7 @@
 					<li><a href="javascript:document.navbarForm.submit()">로그아웃</a>
 					<%} %>
 				</ul>
-				<input type="hidden" value="${param.uri }" id="uri" name="uri">
+				<input type="hidden" value="" id="uri" name="uri">
 			</form>
 		</div>
 	</div>

@@ -47,10 +47,10 @@
 							<p>개봉일 : <%=m.getMv_releasedate() %></p>
 							<p>추천지수 : <%=m.getMv_votecount() %></p>
 							<div class="starRate" >
-								<%   double a = MovieDAO.getMovieStar(m.getMv_id());
-									 int b = (int)a*2;
+								<%	double a = MovieDAO.getMovieStar(m.getMv_id());
+								 	int b = (int)a*2;
 									 
-									 for(int i = 1; i<11; i++){
+								 	for(int i = 1; i<11; i++){
 										if(i%2!=0 && i<=b){%>
 			 						 		 <span class="starR1 on" ></span>
 			 						    <%}else if(i%2==0 && i<=b){%>
@@ -60,7 +60,7 @@
 									  	<%}else {%>
 									  		<span class="starR2" ></span>
 									    <%}
-									    }%>
+								    }%>
 							<p>별점 : <%= a %></p>
 							</div>
 						</div>
@@ -96,12 +96,16 @@
 				</div>
 				<div id="main2-2">
 				<%  int count1 = 0;
-				for(Review r1 : r) {%>
+				if(r == null) {
+					%><p>리뷰 없음</p><%				
+				}else {
+					for(Review r1 : r) {%>
 				<p> 작성자 : <%= r1.getM_nick() %> &nbsp;&nbsp;&nbsp;별점: <%= r1.getR_star() %>&nbsp;&nbsp;&nbsp; 작성일: <%= r1.getR_date() %> <br/>
 				<textarea rows="5" cols="70" style="resize:none;"><%= r1.getR_contents() %> </textarea> 
 				<%
-					count1++;
-				   if(count1==3){break;}
+						count1++;
+				   		if(count1==3){break;}
+			   		}
 				} %>
 				</div>
 			</div> <!-- main_content2 -->

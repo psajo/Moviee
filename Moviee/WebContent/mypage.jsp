@@ -1,3 +1,6 @@
+<%@page import="com.utte.beans.Review"%>
+<%@page import="java.util.List"%>
+<%@page import="com.utte.dao.ReviewDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -67,7 +70,7 @@
                     <li class="mypage__item item03">
                         <div class="item__title">
                             <h4>총 리뷰수</h4>
-                            <p class="title__bottom">100</p>
+                            <p class="title__bottom"><%=ReviewDAO.reviewCount(mvo.getM_nick()) %></p>
                         </div>
                         <div class="item__cont">
                             <ul class="review__list">
@@ -88,10 +91,21 @@
                     </li>
                     <li class="mypage__item item04">
                         <div class="item__title">
-                            <h4>내가 추천한 영화 목록</h4>
+                            <h4>최근에 남긴 리뷰</h4>
                         </div>
-                        <div class="item__cont">
-                        </div>
+                        <%
+                        List<Review> list = ReviewDAO.getReviewsByMb(mvo.getM_nick()); 
+                        if(list !=null) {
+                        	for(Review r : list) {
+                        		%>
+                        		<div class="item__cont">
+                        		<%=r.getR_contents() %>
+                        		</div>
+                        		<%
+                        	}
+                        }
+                        %>
+                        
                     </li>
                 </ul>
             </div>
