@@ -55,7 +55,7 @@ public class UploadProfile extends HttpServlet {
 		mvo.setM_profile(file.getName());
 		session.setAttribute("mvo", mvo);
 		System.out.println(file.getName());
-		
+		response.sendRedirect("mypage.jsp");
 	}
 
 }

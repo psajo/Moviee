@@ -8,13 +8,14 @@
 <link href="./resources/css/mypage.css" rel="stylesheet" />
 </head>
 <body>
-	<%@include file="./header.jsp" %>
+	<%@include file="./header.jsp"%>
     <div class="wrap">        
         <div id="container" class="mypage">
             <div class="inner">
                 <div class="mypage__profile">
                     <div class="profile__box">
                         <div id="profile__image" class="profile__image">
+                        <%System.out.println("testing : " +mvo.getM_profile()); %>
                             <img src="./resources/upload/<%=mvo.getM_nick()+"/"+mvo.getM_profile() %>" alt="프로필 이미지" />
                         </div>
                         <p class="profile__text">

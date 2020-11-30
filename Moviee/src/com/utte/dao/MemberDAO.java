@@ -119,6 +119,7 @@ public class MemberDAO {
 				mvo = new Member();
 				mvo.setM_email(rs.getString("m_email"));
 				mvo.setM_nick(rs.getString("m_nick"));
+				mvo.setM_profile(rs.getString("m_profile"));
 				mvo.setM_fav1(rs.getString("m_fav1"));
 				mvo.setM_fav2(rs.getString("m_fav2"));
 				mvo.setM_fav3(rs.getString("m_fav3"));
