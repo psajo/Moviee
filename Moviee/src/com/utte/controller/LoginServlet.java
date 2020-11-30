@@ -34,8 +34,9 @@ public class LoginServlet extends HttpServlet {
 			System.out.println("m_nick : "  +mvo.getM_nick());
 			HttpSession session =  request.getSession();
 			session.setAttribute("mvo", mvo);
-			if(lgch.equals("ok")) {
+			if(lgch!=null &&lgch.equals("ok")) {
 				Cookie ck = new Cookie("m_email", mvo.getM_email());
+				ck.setMaxAge(Integer.MAX_VALUE);
 				response.addCookie(ck);
 			}
 			System.out.println("uri:"+uri);

@@ -3,6 +3,7 @@ package com.utte.controller;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,9 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String uri =(String)session.getAttribute("uri");
 		session.invalidate();
+		Cookie ck = new Cookie("m_email",null);
+		ck.setMaxAge(0);
+		response.addCookie(ck);
 		System.out.println(uri);
 		response.sendRedirect("IndexServlet");
 	}
