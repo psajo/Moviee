@@ -1,8 +1,18 @@
+<%@page import="com.utte.dao.MemberDAO"%>
 <%@page import="com.utte.beans.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	Member mvo = (Member)session.getAttribute("mvo");
+	if(mvo == null) {
+		Cookie[] cookies = request.getCookies();
+		for(Cookie c : cookies ){
+			if(c.getName().equals("m_email")) {
+				mvo = MemberDAO.useCookie(c.getValue());
+			}
+		}
+			
+	}
 %>
 	<script src="https://kit.fontawesome.com/7878469e76.js" crossorigin="anonymous"></script>
 	<style>
