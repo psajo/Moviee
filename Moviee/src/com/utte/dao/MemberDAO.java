@@ -243,4 +243,33 @@ public class MemberDAO {
 		}
 		return mvo;
 	}
+	//프로필 이미지 업데이트
+	public static int UpdateProfile(String m_email,String m_profile) {
+		Connection conn =null; //db랑 연결해주는 객체
+		PreparedStatement ps=null; //sql문장을 실행시키는 객체
+		int ret =-1; //select: 집합으로 resultSet에 담기! 나머지는 int로 받기 (성공여부) 
+		try { //예외처리
+			conn = MyConnection.getConnection(); //이름에 맞는 클래스 찾아서 객체 생성
+			String sql="UPDATE member " + 
+						"SET m_profile = ?" + 
+						"WHERE m_email = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, m_profile);
+			ps.setString(2, m_email);
+			ret = ps.executeUpdate(); //sql 실행 결과를 ret
+			conn.commit();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace(); // e로 오류 받아서 오류 어디서 발생했는지 콘솔에 띄우기
+		}finally {
+			try {
+				if( conn != null)
+					conn.close();
+				if(ps != null)
+					ps.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return ret;
+	}
 }

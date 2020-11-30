@@ -14,19 +14,25 @@
             <div class="inner">
                 <div class="mypage__profile">
                     <div class="profile__box">
-                        <div class="profile__image">
-                            <img src="./resources/our_images/profile_image.png" alt="프로필 이미지" />
+                        <div id="profile__image" class="profile__image">
+                            <img src="./resources/upload/<%=mvo.getM_nick()+"/"+mvo.getM_profile() %>" alt="프로필 이미지" />
                         </div>
                         <p class="profile__text">
                             안녕하세요 영화광 <span class="profile__name"><%=mvo.getM_nick() %></span>님!<br>오늘 영화 한편 어떠세요?
                         </p>
                     </div>
-                    
-                    <div class="profile__button">
-                        <input type="file" id="profile_edit"/>
-                        <label for="profile_edit">프로필 사진 변경</label>
+                    <div class="wrapper">
+                    	<form action="UploadProfile" method="post" enctype="multipart/form-data">
+		                    <div class="profile__button">
+		                        <input type="file" id="profile_edit" name="profile" onchange="previewImage(this)"/>
+		                        <label for="profile_edit">이미지 찾기</label>
+		                    </div>
+		                    <div class="profile__button">
+		                        <input type="submit" id="profile_save"/>
+		                        <label for="profile_save">이미지 변경</label>
+		                    </div>
+	                    </form>
                     </div>
-                    
                 </div>
                 <ul class="mypage__list">
                     <li class="mypage__item item01">
@@ -96,6 +102,38 @@
     <!-- 하단 정보 텍스트 영역    -->
 	<%@include file="./footer.jsp" %>
 </body>
+<script>
+	function previewImage(f){
+	
+		var file = f.files;
+	
+		// 확장자 체크
+		if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
+			alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
+	
+			// 선택한 파일 초기화
+			f.outerHTML = f.outerHTML;
+	
+			document.getElementById('profile__image').innerHTML = '<img src="./resources/our_images/profile_image.png" alt="프로필 이미지" />';
+	
+		}
+		else {
+	
+			// FileReader 객체 사용
+			var reader = new FileReader();
+	
+			// 파일 읽기가 완료되었을때 실행
+			reader.onload = function(rst){
+				document.getElementById('profile__image').innerHTML = '<img src="' + rst.target.result + '">';
+			}
+	
+			// 파일을 읽는다
+			reader.readAsDataURL(file[0]);
+	
+		}
+	}
+	
+</script>
 <!-- <script>
 	var myPageForm = document.myPageForm;
 	var currPwd = myPageForm.currPwd.value;

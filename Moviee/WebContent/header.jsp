@@ -10,6 +10,7 @@
 			for(Cookie c : cookies ){
 				if(c.getName().equals("m_email")) {
 					mvo = MemberDAO.useCookie(c.getValue());
+					session.setAttribute("mvo", mvo);
 				}
 			}
 		}
