@@ -23,8 +23,12 @@ public class LogoutServlet extends HttpServlet {
 		Cookie ck = new Cookie("m_email",null);
 		ck.setMaxAge(0);
 		response.addCookie(ck);
-		System.out.println(uri);
-		response.sendRedirect("IndexServlet");
+		System.out.println("logout : "+uri);
+		if(uri == null) {
+			response.sendRedirect("IndexServlet");
+		}else {
+			response.sendRedirect(uri);
+		}
 	}
 
 }

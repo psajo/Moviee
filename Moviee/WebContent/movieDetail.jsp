@@ -49,7 +49,7 @@
 									</div>
 								</div> <!-- posterdata -->
 							</div>  <!-- movie_detail -->
-							<div id="overview"> 줄거리 :  <%=m.getMv_overview() %>
+							<div id="overview"> 줄거리 :  <br/><%=m.getMv_overview() %>
 							</div>
 							<div class="movie_review">
 							<% 	Member mb =(Member)session.getAttribute("mvo");
@@ -61,33 +61,36 @@
 							             	<input type="hidden" name="m_nick" value="<%=mb.getM_nick()%>">
 							             	<input type="hidden" name="mv_id" value="<%=m.getMv_id()%>">
 							             	<input type="hidden" name="uri" id="uri2">
-							             	<div class="starRating">
-							             		<span class="starR1" value="0.5"></span>
-							             		<span class="starR2" value="1.0"></span>
-							             		<span class="starR1" value="1.5"></span>
-							             		<span class="starR2" value="2.0"></span>
-							             		<span class="starR1" value="2.5"></span>
-							             		<span class="starR2" value="3.0"></span>
-							             		<span class="starR1" value="3.5"></span>
-							             		<span class="starR2" value="4.0"></span>
-							             		<span class="starR1" value="4.5"></span>
-							             		<span class="starR2" value="5.0"></span>
+							             	<div>
+								             	<div class="starRating">
+								             		<span class="starR1" value="0.5"></span>
+								             		<span class="starR2" value="1.0"></span>
+								             		<span class="starR1" value="1.5"></span>
+								             		<span class="starR2" value="2.0"></span>
+								             		<span class="starR1" value="2.5"></span>
+								             		<span class="starR2" value="3.0"></span>
+								             		<span class="starR1" value="3.5"></span>
+								             		<span class="starR2" value="4.0"></span>
+								             		<span class="starR1" value="4.5"></span>
+								             		<span class="starR2" value="5.0"></span>
+								             	</div>
+								             	<a href="javascript:document.form1.submit();">등록</a>
 							             	</div>
-							             	
 											<input type="hidden" name="r_star" id="r_star">
-											<textarea name="r_contents" cols="50" rows="5"></textarea>	       	
-											<a href="javascript:document.form1.submit();">등록</a>
+											<textarea class="my_textarea" name="r_contents" cols="80" rows="5"></textarea>	       	
+											
 					             		</form>
 									<%
 									}else {
 									%>
 										<form name="form2" method="post" action="DeleteReview">
 											<p> 내가 작성한 리뷰 </p>
-											별점: <span class="mystar"><%= myreview.getR_star() %></span>&nbsp;&nbsp;&nbsp; 작성일: <span class="mydate"><%= myreview.getR_date().substring(0,10) %></span> <br/>
+											별점: <span class="mystar"><%= myreview.getR_star() %></span>&nbsp;&nbsp;&nbsp; 작성일: <span class="mydate"><%= myreview.getR_date().substring(0,10) %></span>
+											<a href="javascript:document.form2.submit();">삭제하기</a> <br/>
 											<textarea class="my_textarea" rows="5" cols="80" ><%= myreview.getR_contents() %> </textarea>
 											<input type="hidden" name ="uri" id="uri3">
 											<input type="hidden" name="r_reviewId" value="<%=myreview.getR_reviewId() %>">
-											<a href="javascript:document.form2.submit();">삭제</a>
+											
 					 					</form>				
 									<%
 										

@@ -164,8 +164,8 @@
     session.setAttribute("state", state);
  %>
 
-			<div class="kakao_btn"><a href="<%=apiURL%>"><img src="./resources/our_images/kakaologo.png" class="kakaologo">카카오톡으로 로그인</a></div>
-			<div class="naver_btn"><a href=""><img src="./resources/our_images/naverlogo.png" class="naverlogo">네이버로 로그인</a></div>
+			<div class="naver_btn"><a href="<%=apiURL%>"><img src="./resources/our_images/naverlogo.png" class="naverlogo">네이버로 로그인</a></div>
+			<div class="kakao_btn"><a href=""><img src="./resources/our_images/kakaologo.png" class="kakaologo">카카오톡으로 로그인</a></div>
 		</div>
 	</section>
 <%

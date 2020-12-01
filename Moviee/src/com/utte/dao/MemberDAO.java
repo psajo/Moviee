@@ -274,4 +274,70 @@ public class MemberDAO {
 		}
 		return ret;
 	}
+	public static Member getNaver(String nid) {
+		Member mvo = null;
+		Connection conn =null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		try {
+			conn = MyConnection.getConnection();
+			String sql = "SELECT * FROM member WHERE m_email=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, nid);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				//이메일, 비밀번호가 일치하는 정보가 있는 경우이므로 로그인처리
+				mvo = new Member();
+				mvo.setM_email(rs.getString("m_email"));
+				mvo.setM_nick(rs.getString("m_nick"));
+				mvo.setM_profile(rs.getString("m_profile"));
+				mvo.setM_fav1(rs.getString("m_fav1"));
+				mvo.setM_fav2(rs.getString("m_fav2"));
+				mvo.setM_fav3(rs.getString("m_fav3"));
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if( conn != null)
+					conn.close();
+				if(ps != null)
+					ps.close();
+				if(rs!=null)
+					rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return mvo;
+	}
+	public static int insertNaver(Member mvo) {
+		Connection conn =null; //db랑 연결해주는 객체
+		PreparedStatement ps=null; //sql문장을 실행시키는 객체
+		int ret =-1; //select: 집합으로 resultSet에 담기! 나머지는 int로 받기 (성공여부) 
+		try { //예외처리
+			conn = MyConnection.getConnection(); //이름에 맞는 클래스 찾아서 객체 생성
+			String sql="INSERT INTO member(m_email,m_pwd,m_nick,m_fav1,m_fav2,m_fav3) VALUES(?,1234,?,?,?,?)";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, mvo.getM_email());
+			ps.setString(2, mvo.getM_nick());
+			ps.setString(3, mvo.getM_fav1());
+			ps.setString(4, mvo.getM_fav2());
+			ps.setString(5, mvo.getM_fav3());
+			ret = ps.executeUpdate(); //sql 실행 결과를 ret
+			conn.commit();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace(); // e로 오류 받아서 오류 어디서 발생했는지 콘솔에 띄우기
+		}finally {
+			try {
+				if( conn != null)
+					conn.close();
+				if(ps != null)
+					ps.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return ret;
+	}
 }

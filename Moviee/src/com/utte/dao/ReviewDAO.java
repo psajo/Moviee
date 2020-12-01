@@ -104,7 +104,7 @@ public class ReviewDAO {
 					rvo.setM_nick(rs.getString("m_nick"));
 					rvo.setMv_id(rs.getInt("mv_id"));
 					rvo.setR_contents(rs.getString("r_contents"));
-					rvo.setR_star(rs.getInt("r_star"));
+					rvo.setR_star(rs.getDouble("r_star"));
 					rvo.setR_date(rs.getString("r_date"));
 					list.add(rvo);
 				}while(rs.next());
@@ -147,7 +147,7 @@ public class ReviewDAO {
 					rvo.setM_nick(rs.getString("m_nick"));
 					rvo.setMv_id(rs.getInt("mv_id"));
 					rvo.setR_contents(rs.getString("r_contents"));
-					rvo.setR_star(rs.getInt("r_star"));
+					rvo.setR_star(rs.getDouble("r_star"));
 					rvo.setR_date(rs.getString("r_date"));
 					list.add(rvo);
 				}while(rs.next());
@@ -286,7 +286,7 @@ public class ReviewDAO {
 				rvo.setMv_id(rs.getInt("mv_id"));
 				rvo.setM_nick(rs.getString("m_nick"));
 				rvo.setR_contents(rs.getString("r_contents"));
-				rvo.setR_star(rs.getInt("r_star"));
+				rvo.setR_star(rs.getDouble("r_star"));
 				rvo.setR_date(rs.getString("r_date"));
 			}
 		} catch (ClassNotFoundException | SQLException e) {

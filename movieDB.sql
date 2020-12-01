@@ -1,6 +1,4 @@
-﻿--moveDB SQL
 
---member 테이블
 CREATE TABLE member(
     m_email VARCHAR2(100) primary key,
     m_pwd VARCHAR2(30) NOT NULL,

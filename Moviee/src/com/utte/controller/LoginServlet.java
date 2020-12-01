@@ -40,9 +40,13 @@ public class LoginServlet extends HttpServlet {
 				response.addCookie(ck);
 			}
 			System.out.println("uri:"+uri);
-			response.sendRedirect(uri);
+			if(uri == null) {
+				response.sendRedirect("IndexServlet");
+			}else {
+				response.sendRedirect(uri);
+				
+			}
 		}else{
-			
 			request.setAttribute("failed", true);
 			RequestDispatcher rd =  request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);

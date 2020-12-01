@@ -24,6 +24,7 @@
 					<%if(request.getAttribute("movielist")==null){%><jsp:forward page="IndexServlet"/><%}%>
 					<% List<Movie> list = (List<Movie>)request.getAttribute("movielist"); %>
 				    <% Member mb =(Member)session.getAttribute("mvo");
+				    
 					   int c = 0;
 			    	for(Movie m : list) {%>
 			    	
@@ -31,13 +32,13 @@
 			    		<%if (mb!=null) { 
 			    			if(c==0){ 
 			    				c++; %>
-			    				<p><%= mb.getM_nick() %>님이 좋아하는 <%= mb.getM_fav1() %> 영화</p>				    			
+			    				<p><%= mb.getM_fav1() %> 영화</p>				    			
 							<%}else if(c==1){
 								c++; %>
-								<p><%= mb.getM_nick() %>님이 좋아하는 <%= mb.getM_fav2() %> 영화</p>
+								<p><%= mb.getM_fav2() %> 영화</p>
 							<%}else{ 
 								c++;%>
-								<p><%= mb.getM_nick() %>님이 좋아하는 <%= mb.getM_fav3() %> 영화</p>								
+								<p><%= mb.getM_fav3() %> 영화</p>								
 							<%}	
 				    	  }else{  %>
 				    		<p>추천지수가 높은 영화</p>
