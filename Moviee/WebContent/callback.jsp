@@ -15,7 +15,7 @@
     String clientSecret = "1P1_jKYCnT";//애플리케이션 클라이언트 시크릿값";
     String code = request.getParameter("code");
     String state = request.getParameter("state");
-    String redirectURI = URLEncoder.encode("http://20.194.19.37/Moviee/callback.jsp", "UTF-8");
+    String redirectURI = URLEncoder.encode("http://20.194.19.37/Moviee/naversignup.jsp", "UTF-8");
     String apiURL;
     apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
     apiURL += "client_id=" + clientId;

@@ -66,7 +66,8 @@
 			</h1>
 			<h1 class="titletext">추가 정보 입력</h1>
 			<form id="frmLogin" name="frmLogin" autocomplete="off" action="NaverSignupServlet" method="POST">
-				<input type="hidden" name ="access" value="">
+				<input type="hidden" id="access_token" name ="access_token" value="${param.access_token }">
+				<input type="hidden" id="refresh_token" name ="refresh_token" value="${param.refresh_token }">
 				<p class="commontext">사용할 닉네임을 입력하세요</p>
 				<div class="input_area">
 					<input type="text" id="m_nick" name="m_nick" class="inputbox" maxlength="50" placeholder="닉네임을 입력하세요">
@@ -98,6 +99,7 @@
 </body>
 <script src="./resources/js/jquery-3.5.1.js"></script>
 <script>
+console.log($("#access_token").val());
 var nickChk = false;
 var favChk=false;
 var m_fav = $("input[name=m_fav]");
