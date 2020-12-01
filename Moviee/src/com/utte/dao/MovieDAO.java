@@ -208,7 +208,7 @@ public class MovieDAO {
 				rs = ps.executeQuery();
 				
 				if(rs.next()) { 
-					double avg_star= rs.getInt("avg_star");
+					double avg_star= rs.getDouble("avg_star");
 					return avg_star;
 				}
 				

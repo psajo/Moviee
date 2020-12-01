@@ -72,6 +72,7 @@
                             <h4>총 리뷰수</h4>
                             <p class="title__bottom"><%=ReviewDAO.reviewCount(mvo.getM_nick()) %></p>
                         </div>
+                        <!-- 
                         <div class="item__cont">
                             <ul class="review__list">
                                 <li class="review__item">
@@ -88,6 +89,7 @@
                                 </li>
                             </ul>
                         </div>
+                         -->
                     </li>
                     <li class="mypage__item item04">
                         <div class="item__title">
