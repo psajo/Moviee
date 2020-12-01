@@ -60,9 +60,9 @@
 							             	<h3>내 리뷰 작성하기</h3>
 							             	<input type="hidden" name="m_nick" value="<%=mb.getM_nick()%>">
 							             	<input type="hidden" name="mv_id" value="<%=m.getMv_id()%>">
-							             	<input type="hidden" name="r_star" value="5">
 							             	<input type="hidden" name="uri" id="uri2">
 											<textarea name="r_contents" cols="50" rows="5"></textarea>	       	
+											<input type="text" name="r_star" value="5">
 											<button>등록</button>
 					             		</form>
 									<%

@@ -2,7 +2,6 @@ package com.utte.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,7 +50,7 @@ public class UploadProfile extends HttpServlet {
 		int size= 1024*1024*10;//저장가능한 파일 최대 크기
 		MultipartRequest multi = new MultipartRequest(request,fullpath, size, "UTF-8",new DefaultFileRenamePolicy() );
 		File file =multi.getFile("profile");
-		MemberDAO.UpdateProfile(mvo.getM_email(), file.getName());
+		MemberDAO.updateProfile(mvo.getM_email(), file.getName());
 		mvo.setM_profile(file.getName());
 		session.setAttribute("mvo", mvo);
 		System.out.println(file.getName());

@@ -245,7 +245,7 @@ public class MemberDAO {
 		return mvo;
 	}
 	//프로필 이미지 업데이트
-	public static int UpdateProfile(String m_email,String m_profile) {
+	public static int updateProfile(String m_email,String m_profile) {
 		Connection conn =null; //db랑 연결해주는 객체
 		PreparedStatement ps=null; //sql문장을 실행시키는 객체
 		int ret =-1; //select: 집합으로 resultSet에 담기! 나머지는 int로 받기 (성공여부) 
