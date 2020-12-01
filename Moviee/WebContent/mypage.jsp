@@ -1,3 +1,6 @@
+<%@page import="com.utte.beans.Review"%>
+<%@page import="java.util.List"%>
+<%@page import="com.utte.dao.ReviewDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,43 +8,35 @@
 <head>
 <meta charset="UTF-8">
 <title>영화어때</title>
-
 <link href="./resources/css/mypage.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="wrap">
-        <header class="header">
-            <div class="inner">
-                <h1 class="header__logo"><a href="#"></a></h1>
-                <div class="header__search">
-                    <div class="input__box">
-                        <input type="search" placeholder="영화를 검색하세요" />
-                    </div>
-                </div>
-                <ul class="header__menu">
-                    <li><a href="#">홈</a></li>
-                    <li><a href="#">로그인</a></li>
-                </ul>
-            </div>
-            
-        </header>
+	<%@include file="./header.jsp"%>
+    <div class="wrap">        
         <div id="container" class="mypage">
             <div class="inner">
                 <div class="mypage__profile">
                     <div class="profile__box">
-                        <div class="profile__image">
-                            <img src="./resources/our_images/profile_image.png" alt="프로필 이미지" />
+                        <div id="profile__image" class="profile__image">
+                        <%System.out.println("testing : " +mvo.getM_profile()); %>
+                            <img src="./resources/upload/<%=mvo.getM_nick()+"/"+mvo.getM_profile() %>" alt="프로필 이미지" />
                         </div>
                         <p class="profile__text">
-                            안녕하세요 영화광 <span class="profile__name">김철수</span>님!<br>오늘 영화 한편 어떠세요?
+                            안녕하세요 영화광 <span class="profile__name"><%=mvo.getM_nick() %></span>님!<br>오늘 영화 한편 어떠세요?
                         </p>
                     </div>
-                    
-                    <div class="profile__button">
-                        <input type="file" id="profile_edit"/>
-                        <label for="profile_edit">프로필 사진 변경</label>
+                    <div class="wrapper">
+                    	<form action="UploadProfile" method="post" enctype="multipart/form-data">
+		                    <div class="profile__button">
+		                        <input type="file" id="profile_edit" name="profile" onchange="previewImage(this)"/>
+		                        <label for="profile_edit">이미지 찾기</label>
+		                    </div>
+		                    <div class="profile__button">
+		                        <input type="submit" id="profile_save"/>
+		                        <label for="profile_save">이미지 변경</label>
+		                    </div>
+	                    </form>
                     </div>
-                    
                 </div>
                 <ul class="mypage__list">
                     <li class="mypage__item item01">
@@ -49,31 +44,33 @@
                             <h4>아이디</h4>
                         </div>
                         <div class="item__cont">
-                            <p>test@test.com</p>
+                            <p><%=mvo.getM_email() %></p>
                         </div>
                     </li>
                     <li class="mypage__item item02">
+                    <form name="myPageForm" action="MypageServlet" method="post">
                         <div class="item__title">
                             <h4>비밀번호 변경</h4>
-                            <button>변경하기</button>
+                            <button onclick="checkPassword()">변경하기</button>
                         </div>
                         <div class="item__cont">
                             <div class="input__box">
-                                <input type="password" placeholder="현재 비밀번호"/>
+                                <input type="password" placeholder="현재 비밀번호" name="currPwd" id="currPwd"/>
                             </div>
                             <div class="input__box">
-                                <input type="password" placeholder="새 비밀번호" />
+                                <input type="password" placeholder="새 비밀번호" name="newPwd" id="newPwd"/>
                             </div>
                             <div class="input__box">
-                                <input type="password" placeholder="새 비밀번호 확인" />
+                                <input type="password" placeholder="새 비밀번호 확인" name="checkPwd" id="checkPwd"/>
                             </div>
                             
                         </div>
+                       </form>
                     </li>
                     <li class="mypage__item item03">
                         <div class="item__title">
                             <h4>총 리뷰수</h4>
-                            <p class="title__bottom">100</p>
+                            <p class="title__bottom"><%=ReviewDAO.reviewCount(mvo.getM_nick()) %></p>
                         </div>
                         <div class="item__cont">
                             <ul class="review__list">
@@ -94,10 +91,21 @@
                     </li>
                     <li class="mypage__item item04">
                         <div class="item__title">
-                            <h4>내가 추천한 영화 목록</h4>
+                            <h4>최근에 남긴 리뷰</h4>
                         </div>
-                        <div class="item__cont">
-                        </div>
+                        <%
+                        List<Review> list = ReviewDAO.getReviewsByMb(mvo.getM_nick()); 
+                        if(list !=null) {
+                        	for(Review r : list) {
+                        		%>
+                        		<div class="item__cont">
+                        		<%=r.getR_contents() %>
+                        		</div>
+                        		<%
+                        	}
+                        }
+                        %>
+                        
                     </li>
                 </ul>
             </div>
@@ -107,16 +115,57 @@
     
     
     <!-- 하단 정보 텍스트 영역    -->
-		<footer>
-			<div class="intro">
-			<!-- Contact -->
-				<p class="title">팀프로젝트 영화어때</p>
-				주소 : (07702) 서울특별시 강서구 화곡로 179<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대한상공회의소 서울기술교육센터 403호<br>
-				팀명 : 영화어때<br>
-				조장 : 박상종   조원 : 이재선 박지원<br>
-				문의 : psajo@naver.com
-			</div>
-		</footer>
+	<%@include file="./footer.jsp" %>
 </body>
+<script>
+	function previewImage(f){
+	
+		var file = f.files;
+	
+		// 확장자 체크
+		if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
+			alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
+	
+			// 선택한 파일 초기화
+			f.outerHTML = f.outerHTML;
+	
+			document.getElementById('profile__image').innerHTML = '<img src="./resources/our_images/profile_image.png" alt="프로필 이미지" />';
+	
+		}
+		else {
+	
+			// FileReader 객체 사용
+			var reader = new FileReader();
+	
+			// 파일 읽기가 완료되었을때 실행
+			reader.onload = function(rst){
+				document.getElementById('profile__image').innerHTML = '<img src="' + rst.target.result + '">';
+			}
+	
+			// 파일을 읽는다
+			reader.readAsDataURL(file[0]);
+	
+		}
+	}
+	
+</script>
+<!-- <script>
+	var myPageForm = document.myPageForm;
+	var currPwd = myPageForm.currPwd.value;
+	var newPwd = myPageForm.newPwd.value;
+	var checkPwd = myPageForm.checkPwd.value;
+	/* 	var currPwd = $('#currPwd').val();
+	var newPwd = $('#newPwd').val();
+	var checkPwd = $('#checkPwd').val(); */
+	
+	console.log("currPwd",currPwd)
+	console.log("newPwd",newPwd)
+	console.log("checkPwd",checkPwd)
+	
+	function checkPassword() {
+		alert("currPwd : "+currPwd)
+		alert("newPwd : "+newPwd)
+		alert("checkPwd : "+checkPwd)
+	}
+</script> -->
 </html>

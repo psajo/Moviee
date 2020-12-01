@@ -29,6 +29,7 @@ public class Movie {
 		this.mv_releasedate = mv_releasedate;
 		this.mv_votecount = mv_votecount;
 	}
+	
 
 	public String getMv_id() {
 		return mv_id;

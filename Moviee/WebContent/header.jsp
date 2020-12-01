@@ -1,8 +1,20 @@
+<%@page import="com.utte.dao.MemberDAO"%>
 <%@page import="com.utte.beans.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	Member mvo = (Member)session.getAttribute("mvo");
+	if(mvo == null) {
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null){
+			for(Cookie c : cookies ){
+				if(c.getName().equals("m_email")) {
+					mvo = MemberDAO.useCookie(c.getValue());
+					session.setAttribute("mvo", mvo);
+				}
+			}
+		}
+	}
 %>
 	<script src="https://kit.fontawesome.com/7878469e76.js" crossorigin="anonymous"></script>
 	<style>
@@ -56,6 +68,7 @@
 		document.getElementById("uri").value = location.pathname + location.search;
 		console.log(location.pathname + location.search);
 	};
+	
 	</script>
 	<div class="header">
 		<div class ="navbar">
@@ -71,12 +84,11 @@
 					<%if (mvo ==null) { %>
 					<li><a onclick="javascript:document.navbarForm.submit()">로그인</a></li>
 					<%}else { %>
-					<li><a href="mypage.jsp"><%=mvo.getM_nick()%></a>
+					<li><a href="mypage.jsp?uri="><%=mvo.getM_nick()%></a>
 					<li><a href="javascript:document.navbarForm.submit()">로그아웃</a>
 					<%} %>
 				</ul>
-				<input type="hidden" value="${param.uri }" id="uri" name="uri">
-				<input type="hidden" value="${param.page }" id="page" name="page">
+				<input type="hidden" value="" id="uri" name="uri">
 			</form>
 		</div>
 	</div>

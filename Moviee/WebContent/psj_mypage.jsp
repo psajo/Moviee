@@ -54,7 +54,7 @@
 	}
 	
 </style>
-<title>íìê°ì</title>
+<title>네이버회원 회원가입</title>
 </head>
 <body>
 	<header>
@@ -63,7 +63,7 @@
 	<section>
 		<div id="section">
 			<h1 class="titletext">
-				ë´ì ë³´
+				추가정보 입력
 			</h1>
 			<div class="wrapper">
 				<div class="infobox">

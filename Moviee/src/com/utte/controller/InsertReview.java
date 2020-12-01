@@ -25,10 +25,11 @@ public class InsertReview extends HttpServlet {
 	//M_NICK MV_ID R_CONTENTS R_STAR
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
-		String m_nick= request.getParameter("M_NICK");
-		int mv_id= Integer.parseInt(request.getParameter("MV_ID"));
-		String r_contents= request.getParameter("R_CONTENTS");
-		int r_star= Integer.parseInt(request.getParameter("R_STAR"));
+		String m_nick= request.getParameter("m_nick");
+		int mv_id= Integer.parseInt(request.getParameter("mv_id"));
+		String r_contents= request.getParameter("r_contents");
+		int r_star= Integer.parseInt(request.getParameter("r_star"));
+		System.out.println("m_nick : "+m_nick+ ", mv_id : "+mv_id+", r_contents : "+r_contents+", r_star : "+r_star);
 		String uri = request.getParameter("uri");
 		Review rvo = new Review(); //review 객체 만들어서 한번에 담아서 전달
 		rvo.setM_nick(m_nick);
@@ -37,11 +38,13 @@ public class InsertReview extends HttpServlet {
 		rvo.setR_star(r_star);
 		int ret =ReviewDAO.insertReview(rvo);
 		if(ret >0) {
+			System.out.println("uri : "+uri);
 			response.sendRedirect(uri);
 		}else {
 			PrintWriter out= response.getWriter();
-			out.print("리뷰<SCRIPT>alert('리뷰실패!!!');</SCRIPT>");
+			out.print("리뷰<SCRIPT>alert('리뷰실패!!!');window.history.back();</SCRIPT>");
 			out.close();
+			
 		}
 		
 	}

@@ -1,7 +1,6 @@
 package com.utte.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -17,32 +16,28 @@ import com.utte.beans.Review;
 import com.utte.dao.MovieDAO;
 import com.utte.dao.ReviewDAO;
 
-/**
- * Servlet implementation class IndexServlet
- */
-@WebServlet("/IndexServlet")
-public class IndexServlet extends HttpServlet {
+@WebServlet("/MovieDetail")
+public class MovieDetail extends HttpServlet{
 	private static final long serialVersionUID = 1L;
        
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Member mvo = (Member)session.getAttribute("mvo");
-		List<Movie> list= null ;
-		Movie m2 = null;
+		Movie m = null;
 		List<Review> r = null;
 		System.out.println("mvo:"+mvo);
+		String mv_id = request.getParameter("mv_id");
+		//String mv_id = "12";
+		m = MovieDAO.getMovie(mv_id);
+		r = ReviewDAO.getReviewsByMvId(mv_id,1);
+	
 		
-		list = MovieDAO.getMovie(mvo);
-		m2 = MovieDAO.getMovie();
-		r = ReviewDAO.getReviewsByMvId(m2.getMv_id(),1);
-		
-		System.out.println("IndexServ : " + list.size());
-		
-		request.setAttribute("movielist", list);
-		request.setAttribute("m2", m2);
+		request.setAttribute("m", m);
 		request.setAttribute("r", r);
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		request.getRequestDispatcher("/movieDetail.jsp").forward(request, response);
 	}
+
+	
 
 }
