@@ -24,6 +24,7 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
 	color: white;       /* 글씨 흰색 */
 	display:block;      
 	width:800px; /* 정렬하려는 요소의 넓이를 반드시 지정 */
+	min-height:1300px;
 	margin: 0 auto;
 	text-align: center;
 	padding:150px 100px 70px 70px;  /* 안쪽 테두리 여백 주기 */
@@ -120,8 +121,9 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
     flex-direction: columm;
 
 }
+.posterData .h1{text-size:20px; color:blue;}
 .poster{ display:block; width: 300px;	height: 400px; float:left;}
-.posterData{ display:block; width: 400px; height: 400px;  float:left;}
+.posterData{ display:block; width: 400px; height: 400px;  float:left; padding:10px 10px;}
  
  
 /* index 화면 적용(content) */
@@ -154,6 +156,8 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
 	height: 180px;
 	margin : 30px auto; 
 	text-align: center;
+	padding-top:50px;
+	padding-bottom:50px;
 
 }
 .movie_review{
