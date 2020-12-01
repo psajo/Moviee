@@ -25,7 +25,7 @@
 								<img src="<%=m.getMv_posterpath() %>" width="300" height="400">
 								</div>
 								<div class="posterData">
-									<p><%= m.getMv_title() %></p>
+									<p class="mt"><%= m.getMv_title() %></p>
 									<p>배우 : <%= m.getMv_casting() %></p>
 									<p>감독 : <%= m.getMv_crew() %></p>
 									<p>추천수 : <%= m.getMv_votecount() %></p>
@@ -45,7 +45,7 @@
 													  		<span class="starR2" ></span>
 													    <%}
 													    }%>
-											<p>별점 : <%= a %></p>
+											<p>별점 : <span class="mystar"><%= a %></span></p>
 									</div>
 								</div> <!-- posterdata -->
 							</div>  <!-- movie_detail -->
@@ -83,8 +83,8 @@
 									%>
 										<form name="form2" method="post" action="DeleteReview">
 											<p> 내가 작성한 리뷰 </p>
-											별점: <%= myreview.getR_star() %>&nbsp;&nbsp;&nbsp; 작성일: <%= myreview.getR_date() %> <br/>
-											<textarea rows="5" cols="70" style="resize:none;"><%= myreview.getR_contents() %> </textarea>
+											별점: <span class="mystar"><%= myreview.getR_star() %></span>&nbsp;&nbsp;&nbsp; 작성일: <span class="mydate"><%= myreview.getR_date().substring(0,10) %></span> <br/>
+											<textarea class="my_textarea" rows="5" cols="80" ><%= myreview.getR_contents() %> </textarea>
 											<input type="hidden" name ="uri" id="uri3">
 											<input type="hidden" name="r_reviewId" value="<%=myreview.getR_reviewId() %>">
 											<a href="javascript:document.form2.submit();">삭제</a>
@@ -97,8 +97,8 @@
 							<%  int count1 = 0;
 								if(r!=null) {
 									for(Review r1 : r) {%>
-									<p> 작성자 : <%= r1.getM_nick() %> &nbsp;&nbsp;&nbsp;별점: <%= r1.getR_star() %>&nbsp;&nbsp;&nbsp; 작성일: <%= r1.getR_date() %> <br/>
-									<textarea rows="5" cols="70" style="resize:none;"><%= r1.getR_contents() %> </textarea> 
+									<p> 작성자 : <span class="mynick"><%= r1.getM_nick() %></span> &nbsp;&nbsp;&nbsp;별점: <span class="mystar"><%= r1.getR_star() %></span>&nbsp;&nbsp;&nbsp; 작성일: <span class="mydate"><%= r1.getR_date().substring(0,10) %></span>
+									<textarea class="my_textarea" rows="5" cols="80"><%= r1.getR_contents() %> </textarea> </p>
 									<%
 										count1++;
 									   if(count1==3){break;}

@@ -43,7 +43,7 @@
 				    		<p>추천지수가 높은 영화</p>
 				    	<%} %>
 							<a href = "MovieDetail?mv_id=<%=m.getMv_id()%>"><img src="<%=m.getMv_posterpath() %>" width="290" height="387"></a>
-							<p><%=m.getMv_title() %> </p>
+							<p class="mt"><%=m.getMv_title() %> </p>
 							<p>개봉일 : <%=m.getMv_releasedate() %></p>
 							<p>추천지수 : <%=m.getMv_votecount() %></p>
 							<div class="starRate" >
@@ -61,7 +61,7 @@
 									  		<span class="starR2" ></span>
 									    <%}
 								    }%>
-							<p>별점 : <%= a %></p>
+							<p>별점 : <span class="mystar"><%= a %></span></p>
 							</div>
 						</div>
 			    	<%}%>
@@ -74,7 +74,7 @@
 							<% Movie m2 = (Movie)request.getAttribute("m2"); %>
 							<% List<Review> r = (List<Review>)request.getAttribute("r"); %>
 					<a href = "MovieDetail?mv_id=<%=m2.getMv_id()%>"><img src="<%=m2.getMv_posterpath() %>" width="300" height="400"></a>
-					<p><%= m2.getMv_title() %></p>
+					<p class="mt"><%= m2.getMv_title() %></p>
 					<p>추천수 : <%= m2.getMv_votecount() %> &nbsp;&nbsp; 리뷰 수 : <%=MovieDAO.getReviewCount(m2.getMv_id()) %> </p>
 					<div class="starRate" >
 								<%   double a = MovieDAO.getMovieStar(m2.getMv_id());
@@ -91,7 +91,7 @@
 									  		<span class="starR2" ></span>
 									    <%}
 									    }%>
-							<p>별점 : <%= a %></p>
+							<p>별점 : <span class="mystar"><%= a %></span></p>
 					</div>
 				</div>
 				<div id="main2-2">
@@ -100,13 +100,16 @@
 					%><p>리뷰 없음</p><%				
 				}else {
 					for(Review r1 : r) {%>
-				<p> 작성자 : <%= r1.getM_nick() %> &nbsp;&nbsp;&nbsp;별점: <%= r1.getR_star() %>&nbsp;&nbsp;&nbsp; 작성일: <%= r1.getR_date() %> <br/>
-				<textarea rows="5" cols="70" style="resize:none;"><%= r1.getR_contents() %> </textarea> 
+				<div class="myreview">
+				<p> 작성자 : <span class="mynick"><%= r1.getM_nick() %></span> &nbsp;&nbsp;&nbsp;별점: <span class="mystar"><%= r1.getR_star() %></span>&nbsp;&nbsp;&nbsp; 작성일: <span class="mydate"><%= r1.getR_date().substring(0,10) %></span>
+				<textarea class="my_textarea" rows="5" cols="80" readonly="readonly"><%= r1.getR_contents() %> </textarea> </p>
+				</div>
 				<%
 						count1++;
 				   		if(count1==3){break;}
 			   		}
 				} %>
+				
 				</div>
 			</div> <!-- main_content2 -->
 			
@@ -118,7 +121,7 @@
 	</body>
 	<%@include file="./footer.jsp" %>	
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="./resources/js/search.js"/>
+	<script type="text/javascript" src="./resources/js/search.js"></script>
 	<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 </html>

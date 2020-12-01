@@ -123,7 +123,7 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
 }
 .posterData .h1{text-size:20px; color:blue;}
 .poster{ display:block; width: 300px;	height: 400px; float:left;}
-.posterData{ display:block; width: 400px; height: 400px;  float:left; padding:10px 10px;}
+.posterData{ display:block; width: 400px; height: 400px;  float:left; padding:10px 50px; text-align: left;}
  
  
 /* index 화면 적용(content) */
@@ -155,7 +155,8 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
 	width: 800px;
 	height: 180px;
 	margin : 30px auto; 
-	text-align: center;
+	text-align: left;
+	line-height:30px;
 	padding-top:50px;
 	padding-bottom:50px;
 
@@ -167,6 +168,27 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
 	margin : 30px auto; 
 
 }
-
-
+.my_textarea {
+	border-radius: 4px;
+	resize :none;
+}
+.mt {
+	font-size: 30px;
+}
+.mynick{
+	color : #f38240;
+}
+.mystar{
+	color : #ff4700;
+}
+.mydate{
+	color : #73d2ef;
+}
+.mynick, .mystar, .mydate{
+	font-size: 25px;
+}
+.myreview{
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
 

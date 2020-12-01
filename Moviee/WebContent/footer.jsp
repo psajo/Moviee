@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -29,6 +29,9 @@
 			font-size: 20px;
 			font-weight: bold;
 		}
+		.supporters {
+			color : white;
+		}
 	</style>
 </head>
 <body>
@@ -39,7 +42,7 @@
 				주소 : (07702) 서울특별시 강서구 화곡로 179<br>
 				대한상공회의소 서울기술교육센터 403호<br>
 				팀명 : 영화어때<br>
-				조원 : 박상종 이재선 김지원 박지원<br>
+				조원 : 박상종 이재선 김지원 박지원 <span class="supporters">김민서</span><br>
 				문의 : psajo@naver.com
 			</div>
 		</div>

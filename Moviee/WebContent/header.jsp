@@ -52,8 +52,8 @@
 			font-size: 20px;
 			border-color: #E91213;
 			border-radius: 3px;
-			width: 400px;
-			height: 40px;
+			width: 600px;
+			height: 50px;
 			vertical-align: middle;
 		}
 		.searchbtn{ 
@@ -82,7 +82,7 @@
 			<form action="<%if (mvo==null) {out.print("./login.jsp");}else {out.print("LogoutServlet");} %>" method="post" name="navbarForm">
 				<ul class="nav_menu">
 					<%if (mvo ==null) { %>
-					<li><a onclick="javascript:document.navbarForm.submit()">로그인</a></li>
+					<li><a href="javascript:document.navbarForm.submit()">로그인</a></li>
 					<%}else { %>
 					<li><a href="mypage.jsp?uri="><%=mvo.getM_nick()%></a>
 					<li><a href="javascript:document.navbarForm.submit()">로그아웃</a>
