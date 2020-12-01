@@ -25,7 +25,7 @@ public class ReviewDAO {
 			ps.setString(1, review.getM_nick());
 			ps.setInt(2, review.getMv_id());
 			ps.setString(3, review.getR_contents());
-			ps.setInt(4, review.getR_star());
+			ps.setDouble(4, Double.valueOf(review.getR_star()));
 			System.out.println(sql);
 			ret = ps.executeUpdate(); //sql 실행 결과를 ret(return)에 저장
 			conn.commit();

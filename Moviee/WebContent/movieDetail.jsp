@@ -25,12 +25,11 @@
 								<img src="<%=m.getMv_posterpath() %>" width="300" height="400">
 								</div>
 								<div class="posterData">
-									<h2><%= m.getMv_title() %></h2>
+									<p><%= m.getMv_title() %></p>
 									<p>배우 : <%= m.getMv_casting() %></p>
 									<p>감독 : <%= m.getMv_crew() %></p>
 									<p>추천수 : <%= m.getMv_votecount() %></p>
 									<p>리뷰 수 : <%=MovieDAO.getReviewCount(m.getMv_id()) %> </p>
-									<br>
 									<div class="starRate" >
 												<%   double a = MovieDAO.getMovieStar(m.getMv_id());
 													 int b = (int)a*2;
@@ -57,28 +56,38 @@
 							   	if(mb != null){
 							   		Review myreview= ReviewDAO.getReview(mb.getM_nick(), m.getMv_id());
 							   		if(myreview ==null) {%>
-						             	<form method="post" action="InsertReview">
+						             	<form name="form1" method="post" action="InsertReview">
 							             	<h3>내 리뷰 작성하기</h3>
 							             	<input type="hidden" name="m_nick" value="<%=mb.getM_nick()%>">
 							             	<input type="hidden" name="mv_id" value="<%=m.getMv_id()%>">
 							             	<input type="hidden" name="uri" id="uri2">
+							             	<div class="starRating">
+							             		<span class="starR1" value="0.5"></span>
+							             		<span class="starR2" value="1.0"></span>
+							             		<span class="starR1" value="1.5"></span>
+							             		<span class="starR2" value="2.0"></span>
+							             		<span class="starR1" value="2.5"></span>
+							             		<span class="starR2" value="3.0"></span>
+							             		<span class="starR1" value="3.5"></span>
+							             		<span class="starR2" value="4.0"></span>
+							             		<span class="starR1" value="4.5"></span>
+							             		<span class="starR2" value="5.0"></span>
+							             	</div>
+							             	
+											<input type="hidden" name="r_star" id="r_star">
 											<textarea name="r_contents" cols="50" rows="5"></textarea>	       	
-											<input type="text" name="r_star" value="5">
-											<button>등록</button>
+											<a href="javascript:document.form1.submit();">등록</a>
 					             		</form>
 									<%
 									}else {
 									%>
 										<form name="form2" method="post" action="DeleteReview">
 											<p> 내가 작성한 리뷰 </p>
-											
-											별점: <%= myreview.getR_star() %>&nbsp;&nbsp;&nbsp; 작성일: <%= myreview.getR_date() %>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:document.form2.submit();">삭제</a> <br/>
-											<textarea rows="5" cols="80" style="resize:none;"><%= myreview.getR_contents() %> </textarea>
+											별점: <%= myreview.getR_star() %>&nbsp;&nbsp;&nbsp; 작성일: <%= myreview.getR_date() %> <br/>
+											<textarea rows="5" cols="70" style="resize:none;"><%= myreview.getR_contents() %> </textarea>
 											<input type="hidden" name ="uri" id="uri3">
-											
 											<input type="hidden" name="r_reviewId" value="<%=myreview.getR_reviewId() %>">
-											
+											<a href="javascript:document.form2.submit();">삭제</a>
 					 					</form>				
 									<%
 										
@@ -89,7 +98,7 @@
 								if(r!=null) {
 									for(Review r1 : r) {%>
 									<p> 작성자 : <%= r1.getM_nick() %> &nbsp;&nbsp;&nbsp;별점: <%= r1.getR_star() %>&nbsp;&nbsp;&nbsp; 작성일: <%= r1.getR_date() %> <br/>
-									<textarea rows="5" cols="80" style="resize:none;"><%= r1.getR_contents() %> </textarea> 
+									<textarea rows="5" cols="70" style="resize:none;"><%= r1.getR_contents() %> </textarea> 
 									<%
 										count1++;
 									   if(count1==3){break;}
@@ -102,6 +111,7 @@
 							
 			</div> <!-- main -->
 </body>
+<script type="text/javascript" src="./resources/js/search.js"></script>
 <script>
 	window.onload=function() {
 		var uri2 =document.getElementById("uri2");
@@ -118,7 +128,7 @@
 </script>
 	<%@include file="footer.jsp" %>	
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="./resources/js/search.js"></script>
+	<script type="text/javascript" src="./resources/js/movieDetail.js"></script>
 	<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 

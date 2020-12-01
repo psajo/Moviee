@@ -9,7 +9,7 @@ public class Review {
 	private String m_nick;
 	private int mv_id; //리뷰 번호
 	private String r_contents;
-	private int r_star;
+	private double r_star;
 	private String r_date; //단순한 출력일땐 string 가능
 	public int getR_reviewId() {
 		return r_reviewId;
@@ -35,10 +35,10 @@ public class Review {
 	public void setR_contents(String r_contents) {
 		this.r_contents = r_contents;
 	}
-	public int getR_star() {
+	public double getR_star() {
 		return r_star;
 	}
-	public void setR_star(int r_star) {
+	public void setR_star(double r_star) {
 		this.r_star = r_star;
 	}
 	public String getR_date() {
