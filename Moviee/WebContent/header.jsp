@@ -85,7 +85,7 @@
 					<%if (mvo ==null) { %>
 					<li><a href="javascript:document.navbarForm.submit()">로그인</a></li>
 					<%}else { %>
-					<li><a href="mypage.jsp?uri="><%=mvo.getM_nick()%></a>
+					<li><a href="mypage.jsp?uri="><span class="mynick"><%=mvo.getM_nick()%></span></a>
 					<li><a href="javascript:document.navbarForm.submit()">로그아웃</a>
 					<%} %>
 				</ul>
