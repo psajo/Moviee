@@ -80,6 +80,10 @@
 		border-radius: 4px;
 		background-color: #28D111;
 	}
+	.naver_btn a {
+		text-decoration: none;
+		color : white;	
+	}
 	.kakaologo {
 		height: 30px;
 		vertical-align: middle;

@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 				response.addCookie(ck);
 			}
 			System.out.println("uri:"+uri);
-			if(uri == null) {
+			if(uri == null || uri.equals("")) {
 				response.sendRedirect("IndexServlet");
 			}else {
 				response.sendRedirect(uri);

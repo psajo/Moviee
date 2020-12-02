@@ -24,7 +24,7 @@ public class LogoutServlet extends HttpServlet {
 		ck.setMaxAge(0);
 		response.addCookie(ck);
 		System.out.println("logout : "+uri);
-		if(uri == null) {
+		if(uri == null || uri.equals("")) {
 			response.sendRedirect("IndexServlet");
 		}else {
 			response.sendRedirect(uri);

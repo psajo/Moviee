@@ -55,7 +55,7 @@ public class NaverLoginServlet extends HttpServlet {
         	HttpSession session = request.getSession();
         	session.setAttribute("mvo", mvo);
         	String uri = (String)session.getAttribute("uri");
-        	if(uri == null) {
+        	if(uri == null || uri.equals("")) {
         		response.sendRedirect("IndexServlet");
         	}else {
         		response.sendRedirect(uri);

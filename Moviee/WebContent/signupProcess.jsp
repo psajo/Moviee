@@ -23,6 +23,10 @@
 		out.print("alert('회원가입에 성공하셨습니다.')");
 		String uri = (String)session.getAttribute("uri");
 		System.out.println(uri);
-		response.sendRedirect(uri);
+		if(uri == null || uri.equals("")){
+			response.sendRedirect("IndexServlet");
+		}else {
+			response.sendRedirect(uri);
+		}
 	}
 %>

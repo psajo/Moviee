@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.security.SecureRandom" %>
+<%@ page import="java.math.BigInteger" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +16,12 @@
 	}
 	.input_area {
 		height: 45px;
+		width: 200;
+		margin:8px,0;
+		padding:3px;
+	}
+	.fav_area{
+		height: 70px;
 		width: 200;
 		margin:8px,0;
 		padding:3px;
@@ -76,6 +85,10 @@
 		border-radius: 4px;
 		background-color: #28D111;
 	}
+	.naver_btn a{
+		text-decoration: none;
+		color : white;
+	}
 	.kakaologo {
 		height: 30px;
 		vertical-align: middle;
@@ -116,8 +129,19 @@
 			<h1 id="section_header">
 				<a href="./index.jsp" class="logo_login"><img src="./resources/our_images/mylogo.png" alt ="로고"></a>
 			</h1>
+			<%
+			    String clientId = "Hahw0dqC7zJNSSxrE35v";//애플리케이션 클라이언트 아이디값";
+			    String redirectURI = URLEncoder.encode("http://20.194.19.37/Moviee/callback.jsp", "UTF-8");
+			    SecureRandom random = new SecureRandom();
+			    String state = new BigInteger(130, random).toString();
+			    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+			    apiURL += "&client_id=" + clientId;
+			    apiURL += "&redirect_uri=" + redirectURI;
+			    apiURL += "&state=" + state;
+			    session.setAttribute("state", state);
+			 %>
+			<div class="naver_btn"><a href="<%=apiURL%>"><img src="./resources/our_images/naverlogo.png" class="naverlogo">네이버로 회원가입</a></div>
 			<div class="kakao_btn"><img src="./resources/our_images/kakaologo.png" class="kakaologo">카카오톡으로 회원가입</div>
-			<div class="naver_btn"><img src="./resources/our_images/naverlogo.png" class="naverlogo">네이버로 회원가입</div>
 			<h1 class="titletext">회원가입</h1>
 			<form id="frmLogin" name="frmLogin" autocomplete="off" action="SignupServlet" method="POST" onsubmit="return checkForm();">
 				<p class="commontext">아이디</p>
@@ -141,21 +165,29 @@
 				</div>
 				<p class="chk_result" id="nick_result">닉네임을 입력하세요</p>
 				<p class="commontext">선호 장르<span id="fav_result">(3개를 선택하세요)</span></p>
-				<div class="input_area">
+				<div class="fav_area">
 					<table>
 						<tr>
-							<td><input type="checkbox" name="user_fav" value="fav1">fav1 </td>
-							<td><input type="checkbox" name="user_fav" value="fav2">fav2 </td>
-							<td><input type="checkbox" name="user_fav" value="fav3">fav3 </td>
-							<td><input type="checkbox" name="user_fav" value="fav4">fav4 </td>
-							<td><input type="checkbox" name="user_fav" value="fav5">fav5 </td>
+							<td><input type="checkbox" name="user_fav" value="SF">SF </td>
+							<td><input type="checkbox" name="user_fav" value="공포">공포 </td>
+							<td><input type="checkbox" name="user_fav" value="가족">가족 </td>
+							<td><input type="checkbox" name="user_fav" value="드라마">드라마 </td>
+							<td><input type="checkbox" name="user_fav" value="애니메이션">애니메이션 </td>
 						</tr>
 						<tr>
-							<td><input type="checkbox" name="user_fav" value="fav6">fav6 </td>
-							<td><input type="checkbox" name="user_fav" value="fav7">fav7 </td>
-							<td><input type="checkbox" name="user_fav" value="fav8">fav8 </td>
-							<td><input type="checkbox" name="user_fav" value="fav9">fav9 </td>
-							<td><input type="checkbox" name="user_fav" value="fav10">fav10 </td>
+							<td><input type="checkbox" name="user_fav" value="모험">모험 </td>
+							<td><input type="checkbox" name="user_fav" value="범죄">범죄 </td>
+							<td><input type="checkbox" name="user_fav" value="로맨스">로맨스 </td>
+							<td><input type="checkbox" name="user_fav" value="스릴러">스릴러 </td>
+							<td><input type="checkbox" name="user_fav" value="미스터리">미스터리 </td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="user_fav" value="액션">액션 </td>
+							<td><input type="checkbox" name="user_fav" value="역사">역사 </td>
+							<td><input type="checkbox" name="user_fav" value="전쟁">전쟁 </td>
+							<td><input type="checkbox" name="user_fav" value="코미디">코미디 </td>
+							<td><input type="checkbox" name="user_fav" value="판타지">판타지 </td>
+							
 						</tr>
 					</table>
 				</div>

@@ -17,6 +17,12 @@
 		margin:10px,0;
 		padding:5px;
 	}
+	.fav_area{
+		height: 70px;
+		width: 200;
+		margin:8px,0;
+		padding:3px;
+	}
 	.inputbox {
 		padding : 0 10px 0;
 		font-size: 20px;
@@ -66,7 +72,7 @@
 			</h1>
 			<h1 class="titletext">추가 정보 입력</h1>
 			<form id="frmLogin" name="frmLogin" autocomplete="off" action="NaverSignupServlet" method="POST">
-				<input type="text" name="nid" value="${nid }">
+				<input type="hidden" name="nid" value="${nid }">
 				<p class="commontext">사용할 닉네임을 입력하세요</p>
 				<div class="input_area">
 					<input type="text" id="m_nick" name="m_nick" class="inputbox" maxlength="50" placeholder="닉네임을 입력하세요">
@@ -76,18 +82,26 @@
 				<div class="input_area">
 					<table>
 						<tr>
-							<td><input type="checkbox" name="m_fav" value="fav1">fav1 </td>
-							<td><input type="checkbox" name="m_fav" value="fav2">fav2 </td>
-							<td><input type="checkbox" name="m_fav" value="fav3">fav3 </td>
-							<td><input type="checkbox" name="m_fav" value="fav4">fav4 </td>
-							<td><input type="checkbox" name="m_fav" value="fav5">fav5 </td>
+							<td><input type="checkbox" name="m_fav" value="SF">SF </td>
+							<td><input type="checkbox" name="m_fav" value="공포">공포 </td>
+							<td><input type="checkbox" name="m_fav" value="가족">가족 </td>
+							<td><input type="checkbox" name="m_fav" value="드라마">드라마 </td>
+							<td><input type="checkbox" name="m_fav" value="애니메이션">애니메이션 </td>
 						</tr>
 						<tr>
-							<td><input type="checkbox" name="m_fav" value="fav6">fav6 </td>
-							<td><input type="checkbox" name="m_fav" value="fav7">fav7 </td>
-							<td><input type="checkbox" name="m_fav" value="fav8">fav8 </td>
-							<td><input type="checkbox" name="m_fav" value="fav9">fav9 </td>
-							<td><input type="checkbox" name="m_fav" value="fav10">fav10 </td>
+							<td><input type="checkbox" name="m_fav" value="모험">모험 </td>
+							<td><input type="checkbox" name="m_fav" value="범죄">범죄 </td>
+							<td><input type="checkbox" name="m_fav" value="로맨스">로맨스 </td>
+							<td><input type="checkbox" name="m_fav" value="스릴러">스릴러 </td>
+							<td><input type="checkbox" name="m_fav" value="미스터리">미스터리 </td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="m_fav" value="액션">액션 </td>
+							<td><input type="checkbox" name="m_fav" value="역사">역사 </td>
+							<td><input type="checkbox" name="m_fav" value="전쟁">전쟁 </td>
+							<td><input type="checkbox" name="m_fav" value="코미디">코미디 </td>
+							<td><input type="checkbox" name="m_fav" value="판타지">판타지 </td>
+							
 						</tr>
 					</table>
 				</div>
