@@ -24,7 +24,7 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
 	color: white;       /* 글씨 흰색 */
 	display:block;      
 	width:800px; /* 정렬하려는 요소의 넓이를 반드시 지정 */
-	min-height:1300px;
+	min-height:1500px;
 	margin: 0 auto;
 	text-align: center;
 	padding:150px 100px 70px 70px;  /* 안쪽 테두리 여백 주기 */
@@ -33,8 +33,9 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
 
 /* 별점 버튼  */
 .starRate{
+	
 	display: block;
-    width: 150px;
+    width: 100%;
     margin: 0 auto;
 }
 .starRating {
@@ -165,7 +166,7 @@ a{text-decoration : none; color : #E91213;} /* a태그 하이퍼링크 밑줄 �
 	position: static;
 	width: 800px;
 	height: 400px;
-	margin : 30px auto; 
+	margin : 100px auto; 
 
 }
 .my_textarea {

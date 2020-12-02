@@ -23,8 +23,9 @@
 			color : #E91213;
 		}
 		.header { 
+			z-index : 100;
 	    	width: 100%; 
-			position: fixed; 
+			position: fixed !important; 
 			top: 0;  
 			background: white;
 			text-align: center;
@@ -52,7 +53,7 @@
 			font-size: 20px;
 			border-color: #E91213;
 			border-radius: 3px;
-			width: 600px;
+			width: 500px;
 			height: 50px;
 			vertical-align: middle;
 		}

@@ -61,8 +61,8 @@
 									  	<%}else {%>
 									  		<span class="starR2" ></span>
 									    <%}
-								    }%>
-							<p>별점 : <span class="mystar"><%= a %></span></p>
+								    }%><br/>
+								<p>별점 : <span class="mystar"><%= a %></span></p>
 							</div>
 						</div>
 			    	<%}%>

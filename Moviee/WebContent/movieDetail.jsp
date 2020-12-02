@@ -44,7 +44,7 @@
 													  	<%}else {%>
 													  		<span class="starR2" ></span>
 													    <%}
-													    }%>
+													    }%><br/>
 											<p>별점 : <span class="mystar"><%= a %></span></p>
 									</div>
 								</div> <!-- posterdata -->

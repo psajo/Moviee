@@ -54,15 +54,13 @@
                             <button onclick="checkPassword()">변경하기</button>
                         </div>
                         <div class="item__cont">
-                            <div class="input__box">
-                                <input type="password" placeholder="현재 비밀번호" name="currPwd" id="currPwd"/>
-                            </div>
-                            <div class="input__box">
-                                <input type="password" placeholder="새 비밀번호" name="newPwd" id="newPwd"/>
-                            </div>
-                            <div class="input__box">
-                                <input type="password" placeholder="새 비밀번호 확인" name="checkPwd" id="checkPwd"/>
-                            </div>
+                            <input class="input__box" type="password" placeholder="현재 비밀번호" name="currPwd" id="currPwd"/>
+                            
+                            <input class="input__box" type="password" placeholder="새 비밀번호" name="newPwd" id="newPwd"/>
+                            
+                            
+                            <input class="input__box" type="password" placeholder="새 비밀번호 확인" name="checkPwd" id="checkPwd"/>
+                            
                             
                         </div>
                        </form>

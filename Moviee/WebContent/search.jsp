@@ -69,7 +69,7 @@
 									  		<span class="starR2" ></span>
 									    <%}
 									    }%>
-							<p>별점 : <%= a %></p>
+							<br/><p>별점 : <%= a %></p>
 							</div>
 							
 	                    </div> <!-- posterData -->
