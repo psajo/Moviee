@@ -67,7 +67,7 @@
 	<script>
 	window.onload=function() {
 		document.getElementById("uri").value = location.pathname + location.search;
-		console.log(location.pathname + location.search);
+		console.log('header의 uri : '+document.getElementById("uri").value);
 	};
 	
 	</script>
@@ -85,7 +85,7 @@
 					<%if (mvo ==null) { %>
 					<li><a href="javascript:document.navbarForm.submit()">로그인</a></li>
 					<%}else { %>
-					<li><a href="mypage.jsp?uri="><span class="mynick"><%=mvo.getM_nick()%></span></a>
+					<li><a href="mypage.jsp?"><span class="mynick"><%=mvo.getM_nick()%></span></a>
 					<li><a href="javascript:document.navbarForm.submit()">로그아웃</a>
 					<%} %>
 				</ul>

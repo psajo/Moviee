@@ -121,7 +121,6 @@
 <%
 	String uri =  request.getParameter("uri");
 	session.setAttribute("uri", uri);
-	System.out.println(uri);
 	String m_email = (String)request.getParameter("m_email");
 	String m_pwd = (String)request.getParameter("m_pwd");
 	if(m_email == null) {
@@ -151,7 +150,7 @@
 					<div class="find_password"><a href="./find.jsp">비밀번호를 잊으셨나요?</a></div>
 					<div class="signup"><a href="./singup.jsp">회원가입</a></div>
 				</div>
-				<input type="hidden" id="uri" name="uri" value="${param.uri }">
+				<input type="hidden" id="uri" name="uri" value="<%=uri%>">
 			</form>
 			<p class="space_or"><span>다른 로그인</span></p>
 
@@ -182,8 +181,10 @@
 	}
 %>
 <script>
+	console.log("uri : "+document.getElementById("uri").value);
 	function alertFailed() {
-		if(<%=failed%>) {
+		var failed = <%=failed%>;
+		if(failed) {
 			alert("가입하지 않은 회원이거나 잘못된 비밀번호 입니다.");
 			document.getElementById("m_email").focus();
 		}

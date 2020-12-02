@@ -74,10 +74,11 @@
 					<p>추천 지수가 가장 높은 영화</p>
 							<% Movie m2 = (Movie)request.getAttribute("m2"); %>
 							<% List<Review> r = (List<Review>)request.getAttribute("r"); %>
-					<a href = "MovieDetail?mv_id=<%=m2.getMv_id()%>"><img src="<%=m2.getMv_posterpath() %>" width="300" height="400"></a>
-					<p class="mt"><%= m2.getMv_title() %></p>
-					<p>추천수 : <%= m2.getMv_votecount() %> &nbsp;&nbsp; 리뷰 수 : <%=MovieDAO.getReviewCount(m2.getMv_id()) %> </p>
-					<div class="starRate" >
+						<a href = "MovieDetail?mv_id=<%=m2.getMv_id()%>"><img src="<%=m2.getMv_posterpath() %>" width="300" height="400"></a>
+								
+						<p class="mt"><%= m2.getMv_title() %></p>
+						<p>추천수 : <%= m2.getMv_votecount() %> &nbsp;&nbsp; 리뷰 수 : <%=MovieDAO.getReviewCount(m2.getMv_id()) %> </p>
+						<div class="starRate" >
 								<%   double a = MovieDAO.getMovieStar(m2.getMv_id());
 									 int b = (int)a*2;
 									 
@@ -119,8 +120,9 @@
 		
 
 <!-- 하단 정보 텍스트 영역    -->
-	</body>
 	<%@include file="./footer.jsp" %>	
+	</body>
+	
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="./resources/js/search.js"></script>
 	<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>

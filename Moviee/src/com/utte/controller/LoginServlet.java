@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 		String m_pwd = request.getParameter("m_pwd");
 		String lgch =request.getParameter("lgch");
 		System.out.println("cookie : "+lgch);
-		String uri =(String)request.getSession().getAttribute("uri");
+		String uri = request.getParameter("uri");
 		Member mvo = MemberDAO.login(m_email, m_pwd);
 		if(mvo != null) {
 			System.out.println("m_nick : "  +mvo.getM_nick());

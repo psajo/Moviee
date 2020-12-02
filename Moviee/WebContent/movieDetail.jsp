@@ -97,7 +97,7 @@
 									}
 							   		
 						   		}%>
-						   		<br/><br/><br/><br/>
+						   		<br/><br/>
 							<%  int count1 = 0;
 								if(r!=null) {
 									for(Review r1 : r) {%>
@@ -115,9 +115,10 @@
 							
 			</div> <!-- main -->
 </body>
+<script type="text/javascript" src="./resources/js/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="./resources/js/search.js"></script>
 <script>
-	window.onload=function() {
+	$(document).ready(function() {
 		var uri2 =document.getElementById("uri2");
 		if(uri2 != null) {
 			uri2.value=location.pathname + location.search;
@@ -126,9 +127,8 @@
 		if(uri3 != null) {
 			uri3.value=location.pathname + location.search;
 		}
-		//document.getElementById("uri3").value = location.pathname + location.search;
-		console.log(location.pathname + location.search);
-	};
+		
+	});
 </script>
 	<%@include file="footer.jsp" %>	
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>

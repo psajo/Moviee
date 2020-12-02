@@ -18,8 +18,13 @@
                 <div class="mypage__profile">
                     <div class="profile__box">
                         <div id="profile__image" class="profile__image">
-                        <%System.out.println("testing : " +mvo.getM_profile()); %>
-                            <img src="./resources/upload/<%=mvo.getM_nick()+"/"+mvo.getM_profile() %>" alt="프로필 이미지" />
+                        <%	System.out.println("testing : " +mvo.getM_profile()); 
+    						if (mvo.getM_profile() != null) {	                    
+                        %>
+                            	<img src="./resources/upload/<%=mvo.getM_nick()+"/"+mvo.getM_profile() %>" alt="프로필 이미지" />
+                        <%	}else {
+                        	%>	<img src="./resources/our_images/profile_image.png" alt="프로필 이미지" />
+                       	<%	}%>
                         </div>
                         <p class="profile__text">
                             안녕하세요 영화광 <span class="profile__name"><%=mvo.getM_nick() %></span>님!<br>오늘 영화 한편 어떠세요?
@@ -29,11 +34,11 @@
                     	<form action="UploadProfile" method="post" enctype="multipart/form-data">
 		                    <div class="profile__button">
 		                        <input type="file" id="profile_edit" name="profile" onchange="previewImage(this)"/>
-		                        <label for="profile_edit">이미지 찾기</label>
+		                        <label for="profile_edit">이미지 선택</label>
 		                    </div>
 		                    <div class="profile__button">
 		                        <input type="submit" id="profile_save"/>
-		                        <label for="profile_save">이미지 변경</label>
+		                        <label for="profile_save">이미지 저장</label>
 		                    </div>
 	                    </form>
                     </div>

@@ -43,6 +43,7 @@ public class NaverLoginServlet extends HttpServlet {
         requestHeaders.put("Authorization", header);
         String responseBody = get(apiURL,requestHeaders);
         System.out.println(responseBody);
+        request.getSession().setAttribute("access_token", access_token);
         JSONObject jObject = new JSONObject(responseBody);
         JSONObject jres= jObject.getJSONObject("response");
         String nid = jres.getString("id");
